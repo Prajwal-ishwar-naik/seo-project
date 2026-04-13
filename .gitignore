@@ -1,0 +1,9 @@
+node_modules/
+uploads/
+data/notifications.json
+data/carts.json
+data/rx-uploads.json
+.env
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login or create your MediShop account to order medicines online with fast home delivery.">
+    <title>MediShop | Login & Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+    <!-- ░░ LEFT PANEL ░░ -->
+    <div class="auth-left" id="auth-left">
+        <a href="/" class="auth-logo"><i class="fas fa-circle-plus"></i><span>Medi<strong>Shop</strong></span></a>
+
+        <!-- Content changes on toggle -->
+        <div class="panel-content" id="panel-content">
+            <div class="panel-icon"><i class="fas fa-shield-halved"></i></div>
+            <h2 id="panel-title">Welcome Back!</h2>
+            <p id="panel-sub">Sign in to access your prescriptions, track orders, and reorder medicines instantly.</p>
+            <ul class="trust-list">
+                <li><i class="fas fa-circle-check"></i> 2M+ Customers Trust Us</li>
+                <li><i class="fas fa-circle-check"></i> 100% Genuine Medicines</li>
+                <li><i class="fas fa-circle-check"></i> 24-Hour Home Delivery</li>
+                <li><i class="fas fa-circle-check"></i> Secure Prescription Upload</li>
+            </ul>
+        </div>
+
+        <!-- Floating decorative icons -->
+        <div class="deco-icons">
+            <span class="deco d1"><i class="fas fa-pills"></i></span>
+            <span class="deco d2"><i class="fas fa-heart-pulse"></i></span>
+            <span class="deco d3"><i class="fas fa-capsules"></i></span>
+            <span class="deco d4"><i class="fas fa-syringe"></i></span>
+            <span class="deco d5"><i class="fas fa-stethoscope"></i></span>
+        </div>
+    </div>
+
+    <!-- ░░ RIGHT PANEL ░░ -->
+    <div class="auth-right">
+
+        <!-- ── LOGIN FORM ── -->
+        <div class="form-card" id="login-card">
+            <div class="form-head">
+                <h1>Sign In</h1>
+                <p>Welcome back — let's get your medicines</p>
+            </div>
+
+            <div id="login-alert" class="form-alert hidden"></div>
+
+            <div class="field-group">
+                <label for="login-email"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email">
+                <span class="field-err" id="login-email-err"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="login-pass"><i class="fas fa-lock"></i> Password</label>
+                <div class="pass-wrap">
+                    <input type="password" id="login-pass" placeholder="Enter your password" autocomplete="current-password">
+                    <button class="toggle-pass" type="button" data-target="login-pass" tabindex="-1"><i class="fas fa-eye"></i></button>
+                </div>
+                <span class="field-err" id="login-pass-err"></span>
+            </div>
+
+            <div class="form-row">
+                <label class="remember-check"><input type="checkbox" id="remember-me"> Remember me</label>
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <button class="btn-submit" id="login-submit">
+                <span class="btn-text"><i class="fas fa-right-to-bracket"></i> Sign In</span>
+                <span class="btn-loader hidden"><i class="fas fa-spinner fa-spin"></i> Signing in…</span>
+            </button>
+
+            <div class="form-divider"><span>or continue with</span></div>
+
+            <div class="social-btns">
+                <button class="social-btn google" onclick="demoSocialLogin()"><i class="fab fa-google"></i> Google</button>
+                <button class="social-btn phone"  onclick="demoSocialLogin()"><i class="fas fa-mobile-screen"></i> OTP</button>
+            </div>
+
+            <p class="switch-text">New to MediShop? <a href="#" id="go-register">Create an account</a></p>
+        </div>
+
+        <!-- ── REGISTER FORM ── -->
+        <div class="form-card hidden-form" id="register-card">
+            <div class="form-head">
+                <h1>Create Account</h1>
+                <p>Join 2M+ customers — starts free</p>
+            </div>
+
+            <div id="register-alert" class="form-alert hidden"></div>
+
+            <div class="form-row-2">
+                <div class="field-group">
+                    <label for="reg-name"><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="reg-name" placeholder="Prajwal Naik" autocomplete="name">
+                    <span class="field-err" id="reg-name-err"></span>
+                </div>
+                <div class="field-group">
+                    <label for="reg-phone"><i class="fas fa-mobile-screen"></i> Phone</label>
+                    <input type="tel" id="reg-phone" placeholder="+91 9XXXXXXXXX" autocomplete="tel">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="reg-email"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email">
+                <span class="field-err" id="reg-email-err"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="reg-pass"><i class="fas fa-lock"></i> Password</label>
+                <div class="pass-wrap">
+                    <input type="password" id="reg-pass" placeholder="Min. 6 characters" autocomplete="new-password">
+                    <button class="toggle-pass" type="button" data-target="reg-pass" tabindex="-1"><i class="fas fa-eye"></i></button>
+                </div>
+                <div class="strength-bar" id="strength-bar">
+                    <div class="strength-fill" id="strength-fill"></div>
+                </div>
+                <span class="strength-label" id="strength-label"></span>
+                <span class="field-err" id="reg-pass-err"></span>
+            </div>
+
+            <div class="field-group">
+                <label for="reg-confirm"><i class="fas fa-lock-open"></i> Confirm Password</label>
+                <div class="pass-wrap">
+                    <input type="password" id="reg-confirm" placeholder="Repeat password" autocomplete="new-password">
+                    <button class="toggle-pass" type="button" data-target="reg-confirm" tabindex="-1"><i class="fas fa-eye"></i></button>
+                </div>
+                <span class="field-err" id="reg-confirm-err"></span>
+            </div>
+
+            <label class="terms-check">
+                <input type="checkbox" id="reg-terms">
+                I agree to the <a href="#" target="_blank">Terms of Service</a> &amp; <a href="#" target="_blank">Privacy Policy</a>
+            </label>
+
+            <button class="btn-submit" id="register-submit">
+                <span class="btn-text"><i class="fas fa-user-plus"></i> Create Account</span>
+                <span class="btn-loader hidden"><i class="fas fa-spinner fa-spin"></i> Creating account…</span>
+            </button>
+
+            <p class="switch-text">Already have an account? <a href="#" id="go-login">Sign in</a></p>
+        </div>
+
+        <!-- ── SUCCESS STATE ── -->
+        <div class="form-card success-card hidden-form" id="success-card">
+            <div class="success-wrap">
+                <div class="success-ring">
+                    <svg class="checkmark-svg" viewBox="0 0 52 52">
+                        <circle class="ck-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path   class="ck-check"  fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <div class="success-text-wrap">
+                    <h2 class="success-title">You're all set! 🎉</h2>
+                    <p class="success-sub">Welcome to MediShop, <strong id="welcome-name">there</strong>!</p>
+                    <p class="success-msg">Your account has been created successfully.</p>
+                </div>
+                <div class="redirect-bar">
+                    <i class="fas fa-circle-notch fa-spin"></i> Redirecting to the shop…
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /auth-right -->
+</div><!-- /auth-page -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

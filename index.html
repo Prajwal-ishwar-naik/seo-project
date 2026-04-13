@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MediShop — India's trusted online pharmacy. Order genuine medicines, vitamins & healthcare products with fast home delivery. Upload prescription for Rx drugs.">
+    <title>MediShop | Online Pharmacy — Medicines Delivered Fast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     STICKY HEADER
+═══════════════════════════════════════════ -->
+<header id="site-header">
+    <div class="header-inner">
+        <a class="logo" href="#"><i class="fas fa-circle-plus"></i><span>Medi<strong>Shop</strong></span></a>
+
+        <div class="search-wrap">
+            <i class="fas fa-magnifying-glass search-icon"></i>
+            <input type="text" id="live-search" placeholder="Search medicines, vitamins, brands…" autocomplete="off">
+            <div id="search-dropdown" class="search-dropdown hidden"></div>
+        </div>
+
+        <div class="header-actions">
+            <button class="btn-rx-upload" id="open-rx-modal">
+                <i class="fas fa-file-medical"></i><span>Upload Rx</span>
+            </button>
+            <button class="btn-cart" id="open-cart" aria-label="Open cart">
+                <i class="fas fa-cart-shopping"></i>
+                <span class="cart-badge" id="cart-count">0</span>
+            </button>
+            <button class="btn-account" aria-label="Account">
+                <i class="fas fa-circle-user"></i><span>Account</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     HERO BANNER
+═══════════════════════════════════════════ -->
+<section id="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <span class="hero-tag"><i class="fas fa-shield-halved"></i> Trusted by 2M+ Customers</span>
+            <h1>Your Health,<br><span class="gradient-text">Delivered Fast</span></h1>
+            <p>Order genuine medicines &amp; vitamins with prescription upload support. Delivered to your doorstep.</p>
+            <div class="hero-btns">
+                <button class="btn-primary" id="hero-shop-btn"><i class="fas fa-bag-shopping"></i> Shop Now</button>
+                <button class="btn-outline" id="hero-rx-btn"><i class="fas fa-file-prescription"></i> Upload Prescription</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><strong>2M+</strong><span>Customers</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><strong>1000+</strong><span>Medicines</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat"><strong>24hr</strong><span>Delivery</span></div>
+            </div>
+        </div>
+        <div class="hero-illustration">
+            <div class="float-card c1" style="--c:#2563EB"><i class="fas fa-pills"></i><span>Analgesics</span></div>
+            <div class="float-card c2" style="--c:#DC2626"><i class="fas fa-heart-pulse"></i><span>Cardio</span></div>
+            <div class="float-card c3" style="--c:#7C3AED"><i class="fas fa-capsules"></i><span>Antibiotics</span></div>
+            <div class="float-card c4" style="--c:#059669"><i class="fas fa-tablets"></i><span>Antacids</span></div>
+            <div class="float-card c5" style="--c:#D97706"><i class="fas fa-sun"></i><span>Vitamins</span></div>
+            <div class="float-card c6" style="--c:#0891B2"><i class="fas fa-droplet"></i><span>Diabetes</span></div>
+        </div>
+    </div>
+
+    <div class="category-pills-bar">
+        <button class="cat-pill active" data-cat="all"><i class="fas fa-th-large"></i> All</button>
+        <button class="cat-pill" data-cat="Analgesics"><i class="fas fa-pills"></i> Analgesics</button>
+        <button class="cat-pill" data-cat="Antibiotics"><i class="fas fa-capsules"></i> Antibiotics</button>
+        <button class="cat-pill" data-cat="Antacids"><i class="fas fa-tablets"></i> Antacids</button>
+        <button class="cat-pill" data-cat="Antihistamines"><i class="fas fa-wind"></i> Antihistamines</button>
+        <button class="cat-pill" data-cat="Vitamins"><i class="fas fa-sun"></i> Vitamins</button>
+        <button class="cat-pill" data-cat="Cardiovascular"><i class="fas fa-heart-pulse"></i> Cardiovascular</button>
+        <button class="cat-pill" data-cat="Diabetes"><i class="fas fa-droplet"></i> Diabetes</button>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MAIN LAYOUT: FILTER + PRODUCTS
+═══════════════════════════════════════════ -->
+<main class="main-layout" id="main-content">
+
+    <!-- Filter Sidebar -->
+    <aside class="filter-sidebar" id="filter-sidebar">
+        <div class="filter-header">
+            <h3><i class="fas fa-sliders"></i> Filters</h3>
+            <button id="clear-filters">Clear All</button>
+        </div>
+
+        <div class="filter-section">
+            <h4>Brand</h4>
+            <div id="brand-filters" class="filter-list"></div>
+        </div>
+
+        <div class="filter-section">
+            <h4>Price Range</h4>
+            <input type="range" id="price-range" min="0" max="200" value="200" step="5">
+            <div class="price-labels"><span>₹0</span><span id="price-max-label">₹200</span></div>
+        </div>
+
+        <div class="filter-section">
+            <h4>Availability</h4>
+            <label class="filter-check"><input type="checkbox" id="in-stock-only"> In Stock Only</label>
+        </div>
+
+        <div class="filter-section">
+            <h4>Prescription</h4>
+            <label class="filter-check"><input type="checkbox" id="otc-only"> OTC Only (No Rx needed)</label>
+        </div>
+    </aside>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="results-bar">
+            <span id="results-count">Loading medicines…</span>
+            <div class="sort-wrap">
+                <label for="sort-select">Sort:</label>
+                <select id="sort-select">
+                    <option value="default">Relevance</option>
+                    <option value="price-asc">Price: Low → High</option>
+                    <option value="price-desc">Price: High → Low</option>
+                    <option value="name">Name A–Z</option>
+                    <option value="discount">Highest Discount</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="product-grid" class="product-grid">
+            <div class="skeleton-card"></div><div class="skeleton-card"></div>
+            <div class="skeleton-card"></div><div class="skeleton-card"></div>
+            <div class="skeleton-card"></div><div class="skeleton-card"></div>
+        </div>
+
+        <div id="no-results" class="no-results hidden">
+            <i class="fas fa-magnifying-glass-minus"></i>
+            <h4>No medicines found</h4>
+            <p>Try a different search or clear the filters</p>
+        </div>
+    </section>
+</main>
+
+<!-- ═══════════════════════════════════════════
+     ORDER TRACKING SECTION
+═══════════════════════════════════════════ -->
+<section id="tracking-section">
+    <div class="tracking-inner">
+        <div class="tracking-title">
+            <i class="fas fa-location-crosshairs"></i>
+            <div>
+                <h2>Track Your Order</h2>
+                <p>Real-time delivery updates. Try: <strong>MS-2024-001</strong> or <strong>DEMO</strong></p>
+            </div>
+        </div>
+        <div class="tracking-input-wrap">
+            <input type="text" id="order-id-input" placeholder="Enter Order ID (e.g. MS-2024-001)">
+            <button id="track-btn"><i class="fas fa-location-arrow"></i> Track</button>
+        </div>
+        <div id="tracking-result" class="hidden"></div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CART SIDEBAR
+═══════════════════════════════════════════ -->
+<div id="cart-overlay" class="cart-overlay hidden"></div>
+<div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3><i class="fas fa-cart-shopping"></i> Your Cart</h3>
+        <button id="close-cart"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div id="cart-empty" class="cart-empty hidden">
+        <i class="fas fa-cart-shopping"></i>
+        <p>Your cart is empty</p>
+        <span>Add medicines to get started</span>
+    </div>
+    <div class="cart-footer" id="cart-footer">
+        <div class="cart-rx-note" id="cart-rx-note" style="display:none">
+            <i class="fas fa-circle-info"></i>
+            <span>Prescription required for Rx items. Please upload before checkout.</span>
+        </div>
+        <div class="cart-totals">
+            <div class="cart-row"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
+            <div class="cart-row"><span>Delivery</span><span class="free-label">FREE</span></div>
+            <div class="cart-row total-row"><span>Total</span><span id="cart-total">₹0</span></div>
+        </div>
+        <button class="btn-checkout" id="checkout-btn"><i class="fas fa-lock"></i> Proceed to Checkout</button>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════ -->
+
+<!-- 1. Prescription Upload Modal -->
+<div id="rx-modal" class="modal-backdrop hidden">
+    <div class="modal">
+        <div class="modal-header">
+            <h3><i class="fas fa-file-medical"></i> Upload Prescription</h3>
+            <button class="close-modal" aria-label="Close"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="rx-drop-zone" id="rx-drop-zone">
+                <i class="fas fa-cloud-arrow-up"></i>
+                <p>Drag &amp; drop your prescription here</p>
+                <span>— or —</span>
+                <label class="btn-browse" for="rx-file-input"><i class="fas fa-folder-open"></i> Browse Files</label>
+                <input type="file" id="rx-file-input" accept=".jpg,.jpeg,.png,.pdf" hidden>
+                <small>Accepted: JPG, PNG, PDF &nbsp;·&nbsp; Max: 5 MB</small>
+            </div>
+            <div id="rx-preview" class="rx-preview hidden"></div>
+            <div id="rx-error"   class="rx-error hidden"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-outline-sm close-modal">Cancel</button>
+            <button class="btn-primary" id="submit-rx" disabled><i class="fas fa-paper-plane"></i> Submit Prescription</button>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Drug Interaction Warning Modal -->
+<div id="interaction-modal" class="modal-backdrop hidden">
+    <div class="modal">
+        <div class="modal-header warning-header">
+            <h3><i class="fas fa-triangle-exclamation"></i> Drug Interaction Alert</h3>
+        </div>
+        <div class="modal-body" id="interaction-body"></div>
+        <div class="modal-footer">
+            <button class="btn-danger" id="remove-interaction-btn">Remove Conflicting Item</button>
+            <button class="btn-outline-sm" id="keep-anyway-btn">I Acknowledge — Add Anyway</button>
+        </div>
+    </div>
+</div>
+
+<!-- 3. Notify Me Modal -->
+<div id="notify-modal" class="modal-backdrop hidden">
+    <div class="modal">
+        <div class="modal-header">
+            <h3><i class="fas fa-bell"></i> Get Restocking Alert</h3>
+            <button class="close-modal" aria-label="Close"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+            <p id="notify-med-name" class="notify-med-name"></p>
+            <p class="notify-desc">We'll notify you the moment this medicine is back in stock.</p>
+            <input type="email" id="notify-email" placeholder="Your email address">
+            <input type="tel"   id="notify-phone" placeholder="Or your phone number (WhatsApp)">
+        </div>
+        <div class="modal-footer">
+            <button class="btn-outline-sm close-modal">Cancel</button>
+            <button class="btn-primary" id="notify-submit"><i class="fas fa-bell"></i> Notify Me</button>
+        </div>
+    </div>
+</div>
+
+<!-- 4. Product Detail Modal -->
+<div id="detail-modal" class="modal-backdrop hidden">
+    <div class="modal modal-lg">
+        <div class="modal-header">
+            <h3 id="detail-title">Medicine Details</h3>
+            <button class="close-modal" aria-label="Close"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="modal-body" id="detail-body"></div>
+        <div class="modal-footer" id="detail-footer"></div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
