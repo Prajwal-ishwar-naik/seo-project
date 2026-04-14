@@ -626,6 +626,10 @@ $(function () {
 
         $('#cart-subtotal, #cart-total').text('₹' + Cart.total());
         $('#cart-rx-note').toggle(Cart.hasRxItems());
+        
+        if (!rxVerified) {
+            $('#checkout-btn').html('<i class="fas fa-lock"></i> Proceed to Checkout');
+        }
     }
 
     function updateBadge() {
@@ -681,6 +685,7 @@ $(function () {
                 renderCart();
                 updateBadge();
                 rxVerified = false;
+                $('#checkout-btn').html('<i class="fas fa-lock"></i> Proceed to Checkout');
                 
                 // Reset form
                 $('#chk-name, #chk-phone, #chk-address').val('');
