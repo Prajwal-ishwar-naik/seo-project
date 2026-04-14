@@ -4,12 +4,11 @@ const express = require('express');
 const multer  = require('multer');
 const path    = require('path');
 const fs      = require('fs');
+const fsPromises = require('fs/promises');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
-const { open } = require('sqlite');
-const sqlite3 = require('sqlite3').verbose();
 const PDFDocument = require('pdfkit');
 
 const app  = express();
@@ -20,78 +19,35 @@ const PORT = process.env.PORT || 3000;
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
 
-// ── Database Setup (SQLite Serverless) ───────────────────────────────────
-const MEDICINES_FILE = path.join(__dirname, 'data', 'medicines.json');
+// ── Native JSON Database Setup (100% cloud-compatible) ──────────
+const DB = {
+    medicines: path.join(__dirname, 'data', 'medicines.json'),
+    rx_uploads: path.join(__dirname, 'data', 'rx_uploads.json'),
+    orders: path.join(__dirname, 'data', 'orders.json'),
+    notifications: path.join(__dirname, 'data', 'notifications.json')
+};
 
-let db;
+// Ensure all database files exist
+Object.values(DB).forEach(file => {
+    if (!fs.existsSync(file)) {
+        fs.writeFileSync(file, JSON.stringify([]));
+    }
+});
 
-async function initDb() {
+// Helper for reading JSON DB
+async function readDb(file) {
     try {
-        db = await open({
-            filename: path.join(__dirname, 'data', 'database.sqlite'),
-            driver: sqlite3.Database
-        });
-
-        await db.exec(`
-            CREATE TABLE IF NOT EXISTS medicines (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT,
-                generic TEXT,
-                brand TEXT,
-                category TEXT,
-                price REAL,
-                mrp REAL,
-                stock INTEGER,
-                rx BOOLEAN,
-                icon TEXT,
-                color TEXT,
-                desc TEXT
-            );
-
-            CREATE TABLE IF NOT EXISTS rx_uploads (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                filename TEXT,
-                originalName TEXT,
-                size INTEGER,
-                mimetype TEXT,
-                uploadedAt DATETIME DEFAULT CURRENT_TIMESTAMP
-            );
-
-            CREATE TABLE IF NOT EXISTS orders (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                order_key TEXT UNIQUE,
-                total REAL,
-                status TEXT DEFAULT 'Pharmacy Verified',
-                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-                eta TEXT
-            );
-
-            CREATE TABLE IF NOT EXISTS notifications (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                email TEXT,
-                phone TEXT,
-                medicineId INTEGER,
-                medicineName TEXT,
-                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-            );
-        `);
-
-        const row = await db.get('SELECT COUNT(*) as count FROM medicines');
-        if (row.count === 0 && fs.existsSync(MEDICINES_FILE)) {
-            const list = JSON.parse(fs.readFileSync(MEDICINES_FILE, 'utf-8'));
-            for (let m of list) {
-                await db.run(
-                    'INSERT INTO medicines (id, name, generic, brand, category, price, mrp, stock, rx, icon, color, desc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                    [m.id, m.name, m.generic, m.brand, m.category, m.price, m.mrp, m.stock, m.rx ? 1 : 0, m.icon, m.color, m.desc]
-                );
-            }
-            console.log("SQLite Database seeded with initial medicines.");
-        }
-    } catch (err) {
-        console.error("SQLite Initialization Error:", err.message);
+        const data = await fsPromises.readFile(file, 'utf-8');
+        return JSON.parse(data || '[]');
+    } catch {
+        return [];
     }
 }
-initDb();
+
+// Helper for writing JSON DB
+async function writeDb(file, data) {
+    await fsPromises.writeFile(file, JSON.stringify(data, null, 2));
+}
 
 // ── Middleware ─────────────────────────────────────────────────
 app.use(helmet({ contentSecurityPolicy: false }));
@@ -125,80 +81,84 @@ const uploadRx = multer({
 //  API ROUTES
 // ══════════════════════════════════════════════════════════════
 
-// GET /api/medicines  — full catalogue
+// GET /api/medicines
 app.get('/api/medicines', async (req, res) => {
     try {
-        let sql = 'SELECT * FROM medicines';
-        const params = [];
-        const conditions = [];
+        let medicines = await readDb(DB.medicines);
 
         if (req.query.category) {
-            conditions.push("category = ?");
-            params.push(req.query.category);
+            medicines = medicines.filter(m => m.category === req.query.category);
         }
         if (req.query.brand) {
-            conditions.push("brand = ?");
-            params.push(req.query.brand);
+            medicines = medicines.filter(m => m.brand === req.query.brand);
         }
 
-        if (conditions.length > 0) {
-            sql += " WHERE " + conditions.join(" AND ");
-        }
-
-        const rows = await db.all(sql, params);
-        const parsedRows = rows.map(r => ({ ...r, rx: r.rx === 1 }));
-        
-        res.json(parsedRows);
+        res.json(medicines);
     } catch (err) {
         console.error('Error fetching medicines:', err);
         res.status(500).json({ error: 'Could not load medicine catalogue.' });
     }
 });
 
-// GET /api/medicines/:id  — single medicine
+// GET /api/medicines/:id
 app.get('/api/medicines/:id', async (req, res) => {
     try {
-        const row = await db.get('SELECT * FROM medicines WHERE id = ?', [req.params.id]);
+        const medicines = await readDb(DB.medicines);
+        const row = medicines.find(m => m.id.toString() === req.params.id);
         if (!row) return res.status(404).json({ error: 'Medicine not found.' });
-        
-        row.rx = row.rx === 1;
         res.json(row);
     } catch (err) {
         res.status(500).json({ error: 'Server error.' });
     }
 });
 
-// POST /api/rx-upload  — prescription file upload
+// POST /api/rx-upload
 app.post('/api/rx-upload', (req, res, next) => {
     uploadRx.single('prescription')(req, res, async (err) => {
         if (err) return res.status(400).json({ error: err.message || 'File upload failed.' });
         if (!req.file) return res.status(400).json({ error: 'No file received.' });
 
         try {
-            await db.run('INSERT INTO rx_uploads (filename, originalName, size, mimetype) VALUES (?, ?, ?, ?)', 
-            [req.file.filename, req.file.originalname, req.file.size, req.file.mimetype]);
-            
+            const uploads = await readDb(DB.rx_uploads);
+            uploads.push({
+                id: Date.now(),
+                filename: req.file.filename,
+                originalName: req.file.originalname,
+                size: req.file.size,
+                mimetype: req.file.mimetype,
+                uploadedAt: new Date().toISOString()
+            });
+            await writeDb(DB.rx_uploads, uploads);
+
             res.json({
                 success:  true,
                 message:  'Prescription uploaded! Our pharmacist has instantly verified your prescription.',
                 filename: req.file.filename
             });
         } catch (dbErr) {
-            console.error('Error saving rx upload to db:', dbErr);
+            console.error('Error saving rx upload:', dbErr);
             res.status(500).json({ error: 'Database saving failed.' });
         }
     });
 });
 
-// POST /api/notify  — "Notify me when back in stock"
+// POST /api/notify
 app.post('/api/notify', async (req, res) => {
     try {
         const { email, phone, medicineId, medicineName } = req.body;
         if (!email && !phone) return res.status(400).json({ error: 'Email or phone number is required.' });
 
-        await db.run('INSERT INTO notifications (email, phone, medicineId, medicineName) VALUES (?, ?, ?, ?)', 
-        [email || null, phone || null, medicineId || null, medicineName || null]);
-        
+        const notifications = await readDb(DB.notifications);
+        notifications.push({
+            id: Date.now(),
+            email: email || null,
+            phone: phone || null,
+            medicineId: medicineId || null,
+            medicineName: medicineName || null,
+            createdAt: new Date().toISOString()
+        });
+        await writeDb(DB.notifications, notifications);
+
         res.json({ success: true, message: "You'll be notified when the medicine is back in stock." });
     } catch (err) {
         console.error('Error recording notification:', err);
@@ -206,7 +166,7 @@ app.post('/api/notify', async (req, res) => {
     }
 });
 
-// POST /api/checkout  — processes the final cart order
+// POST /api/checkout
 app.post('/api/checkout', async (req, res) => {
     try {
         const { items, total } = req.body;
@@ -215,10 +175,18 @@ app.post('/api/checkout', async (req, res) => {
         const orderKey = `MS-${new Date().getFullYear()}-${Math.floor(Math.random() * 900) + 100}`;
         const etaDate = new Date();
         etaDate.setDate(etaDate.getDate() + 3);
-        const etaParams = { month: 'short', day: 'numeric', year: 'numeric' };
-        
-        await db.run('INSERT INTO orders (order_key, total, eta) VALUES (?, ?, ?)', 
-        [orderKey, total, etaDate.toLocaleDateString('en-US', etaParams)]);
+        const etaString = etaDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        const orders = await readDb(DB.orders);
+        orders.push({
+            id: Date.now(),
+            order_key: orderKey,
+            total,
+            status: 'Pharmacy Verified',
+            eta: etaString,
+            createdAt: new Date().toISOString()
+        });
+        await writeDb(DB.orders, orders);
         
         res.json({ success: true, orderId: orderKey, message: 'Order placed successfully!' });
     } catch (err) {
@@ -227,10 +195,11 @@ app.post('/api/checkout', async (req, res) => {
     }
 });
 
-// GET /api/track/:orderId  — track real orders from DB 
+// GET /api/track/:orderId  
 app.get('/api/track/:orderId', async (req, res) => {
     try {
-        const row = await db.get('SELECT * FROM orders WHERE order_key = ?', [req.params.orderId.toUpperCase()]);
+        const orders = await readDb(DB.orders);
+        const row = orders.find(o => o.order_key === req.params.orderId.toUpperCase());
         
         if (row) {
             const created = new Date(row.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -238,11 +207,11 @@ app.get('/api/track/:orderId', async (req, res) => {
             return;
         }
 
-        const ORDERS = {
+        const fallbackOrders = {
             'MS-2024-001': { step: 3, items: 'Crocin Advance, Limcee 500',    date: 'Apr 12, 2026', eta: 'Apr 16, 2026' },
             'DEMO':        { step: 2, items: 'Demo Order — MediShop',          date: 'Today',        eta: 'In 2–3 days'  },
         };
-        const order = ORDERS[req.params.orderId.toUpperCase()];
+        const order = fallbackOrders[req.params.orderId.toUpperCase()];
         if (!order) return res.status(404).json({ error: `Order "${req.params.orderId}" not found. Try MS-2024-001 or DEMO.` });
         res.json(order);
     } catch (err) {
@@ -251,7 +220,7 @@ app.get('/api/track/:orderId', async (req, res) => {
     }
 });
 
-// GET /api/generate-prescription  — dynamically creates a PDF prescription
+// GET /api/generate-prescription
 app.get('/api/generate-prescription', (req, res) => {
     try {
         const { patientName = 'John Doe', medicineName = 'Amoxicillin 500mg' } = req.query;
@@ -295,13 +264,6 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Dat
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Graceful shutdown handling
-process.on('SIGINT', async () => {
-    if (db) await db.close();
-    console.log('Closed the database connection.');
-    process.exit(0);
 });
 
 app.listen(PORT, () => {
