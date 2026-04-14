@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MediShop — India's trusted online pharmacy. Order genuine medicines, vitamins &amp; healthcare products with fast home delivery. Upload prescription for Rx drugs.">
+    <meta name="keywords" content="pharmacy online, order medicine, online pharmacy India, prescription drugs, vitamin supplements, fast medicine delivery">
+    <meta name="author" content="MediShop">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:title" content="MediShop | Online Pharmacy — Medicines Delivered Fast">
+    <meta property="og:description" content="Order genuine medicines & vitamins with prescription upload support. Delivered to your doorstep.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://medishop-example.com/">
+    <meta property="og:image" content="https://medishop-example.com/social-share.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MediShop | Online Pharmacy">
+    <meta name="twitter:description" content="Order genuine medicines & vitamins with fast delivery.">
+    <meta name="twitter:image" content="https://medishop-example.com/social-share.png">
+
+    <link rel="canonical" href="https://medishop-example.com/">
     <title>MediShop | Online Pharmacy — Medicines Delivered Fast</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -268,6 +286,32 @@
         </div>
         <div class="modal-body" id="detail-body"></div>
         <div class="modal-footer" id="detail-footer"></div>
+    </div>
+</div>
+
+<!-- 5. Checkout Details Modal -->
+<div id="checkout-modal" class="modal-backdrop hidden">
+    <div class="modal">
+        <div class="modal-header">
+            <h3><i class="fas fa-truck-fast"></i> Delivery Details</h3>
+            <button class="close-modal" aria-label="Close"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <input type="text" id="chk-name" placeholder="Full Name" required style="padding:10px; border:1px solid #ddd; border-radius:8px;">
+                <input type="tel" id="chk-phone" placeholder="Phone Number" required style="padding:10px; border:1px solid #ddd; border-radius:8px;">
+                <textarea id="chk-address" placeholder="Full Delivery Address" rows="3" required style="padding:10px; border:1px solid #ddd; border-radius:8px; font-family:inherit; resize:vertical;"></textarea>
+                <div style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; margin-top:5px;">
+                    <strong style="display:block; margin-bottom:8px; color:#334155;">Payment Method</strong>
+                    <label class="filter-check" style="margin-bottom:5px;"><input type="radio" name="payment" value="cod" checked> Cash on Delivery (COD)</label>
+                    <label class="filter-check"><input type="radio" name="payment" value="upi"> UPI / Online Payment</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-outline-sm close-modal">Cancel</button>
+            <button class="btn-primary" id="confirm-order-btn"><i class="fas fa-check"></i> Place Order</button>
+        </div>
     </div>
 </div>
 

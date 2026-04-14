@@ -43,6 +43,7 @@ $(function () {
     let activeCategory    = 'all';
     let pendingItem       = null;
     let notifyMed         = null;
+    let rxVerified        = false;
 
     // ═══════════════════════════════════════════════════════
     //  CART  — localStorage persistence
@@ -475,28 +476,45 @@ $(function () {
         const formData = new FormData();
         formData.append('prescription', file);
 
-        const $btn = $(this).html('<i class="fas fa-spinner fa-spin"></i> Uploading…').prop('disabled', true);
+        const $btn = $(this).html('<i class="fas fa-spinner fa-spin"></i> Uploading Securely...').prop('disabled', true);
 
-        $.ajax({
-            url:         '/api/rx-upload',
-            type:        'POST',
-            data:        formData,
-            processData: false,   // Required for FormData
-            contentType: false,   // Required for FormData
-            success: function (res) {
-                closeModal('#rx-modal');
-                $('#rx-file-input').val('');
-                $('#rx-preview, #rx-error').addClass('hidden').empty();
-                toast(`<i class="fas fa-circle-check"></i> ${res.message}`, 'success');
-            },
-            error: function (xhr) {
-                const msg = xhr.responseJSON?.error || 'Upload failed. Please try again.';
-                $('#rx-error').html(`<i class="fas fa-circle-exclamation"></i> ${msg}`).removeClass('hidden');
-            },
-            complete: function () {
-                $btn.html('<i class="fas fa-paper-plane"></i> Submit Prescription').prop('disabled', false);
-            }
-        });
+        // Simulated AI Verification Flow
+        setTimeout(() => {
+            $btn.html('<i class="fas fa-microchip fa-fade" style="color: #3b82f6;"></i> AI OCR Scanning...');
+            
+            setTimeout(() => {
+                $btn.html('<i class="fas fa-arrows-rotate fa-spin"></i> Cross-checking Cart...');
+                
+                setTimeout(() => {
+                    // Call the real Express API after the "scanning" completes
+                    $.ajax({
+                        url:         '/api/rx-upload',
+                        type:        'POST',
+                        data:        formData,
+                        processData: false,   
+                        contentType: false,   
+                        success: function (res) {
+                            closeModal('#rx-modal');
+                            $('#rx-file-input').val('');
+                            $('#rx-preview, #rx-error').addClass('hidden').empty();
+                            toast(`<i class="fas fa-circle-check"></i> AI Match Successful! ${res.message}`, 'success');
+                            rxVerified = true;
+                            $('#checkout-btn').html('<i class="fas fa-truck-fast"></i> Delivery Details');
+                            
+                            // Automatically skip to the delivery details modal
+                            setTimeout(() => $('#checkout-btn').trigger('click'), 1200);
+                        },
+                        error: function (xhr) {
+                            const msg = xhr.responseJSON?.error || 'Upload failed. Please try again.';
+                            $('#rx-error').html(`<i class="fas fa-circle-exclamation"></i> ${msg}`).removeClass('hidden');
+                        },
+                        complete: function () {
+                            $btn.html('<i class="fas fa-paper-plane"></i> Submit Prescription').prop('disabled', false);
+                        }
+                    });
+                }, 1500);
+            }, 1800);
+        }, 1200);
     });
 
     // ═══════════════════════════════════════════════════════
@@ -619,13 +637,68 @@ $(function () {
     $(document).on('click', '.ci-del',  function () { Cart.remove(+$(this).data('id')); renderMedicines(filteredMedicines); });
 
     $('#checkout-btn').on('click', function () {
-        if (Cart.hasRxItems()) {
+        if (Cart.hasRxItems() && !rxVerified) {
             closeCart();
             setTimeout(() => openModal('#rx-modal'), 350);
             toast('<i class="fas fa-file-prescription"></i> Please upload your prescription for Rx items first.', 'warning');
-        } else {
-            toast('<i class="fas fa-lock"></i> Redirecting to payment gateway…', 'success');
+            return;
         }
+        
+        const items = Cart.get();
+        if (!items.length) return;
+        
+        // Open the Checkout Details Modal
+        closeCart();
+        setTimeout(() => openModal('#checkout-modal'), 350);
+    });
+
+    $('#confirm-order-btn').on('click', function () {
+        const name = $('#chk-name').val().trim();
+        const phone = $('#chk-phone').val().trim();
+        const address = $('#chk-address').val().trim();
+
+        if (!name || !phone || !address) {
+            toast('Please fill in all delivery details!', 'warning');
+            return;
+        }
+
+        const items = Cart.get();
+        const $btn = $(this).html('<i class="fas fa-spinner fa-spin"></i> Processing…').prop('disabled', true);
+        
+        $.ajax({
+            url: '/api/checkout',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ 
+                items: items, 
+                total: Cart.total(),
+                customer: { name, phone, address, paymentMethod: $('input[name="payment"]:checked').val() }
+            }),
+            success: function (res) {
+                closeModal('#checkout-modal');
+                toast(`<i class="fas fa-box"></i> ${res.message}`, 'success');
+                Cart.save([]);
+                renderCart();
+                updateBadge();
+                rxVerified = false;
+                
+                // Reset form
+                $('#chk-name, #chk-phone, #chk-address').val('');
+                
+                // Auto-trigger tracking
+                setTimeout(() => {
+                    $('#order-id-input').val(res.orderId);
+                    $('html,body').animate({ scrollTop: $('#tracking-section').offset().top - 75 }, 600);
+                    $('#track-btn').trigger('click');
+                }, 1000);
+            },
+            error: function () {
+                toast('<i class="fas fa-circle-xmark"></i> Checkout failed. Please try again.', 'warning');
+            },
+            complete: function () {
+                $btn.html('<i class="fas fa-check"></i> Place Order').prop('disabled', false);
+            }
+        });
     });
 
     function openCart()  { $('#cart-sidebar, #cart-overlay').removeClass('hidden'); setTimeout(() => $('#cart-sidebar').addClass('open'), 10); }
