@@ -8,7 +8,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
-const mysql = require('mysql2/promise');
+const { open } = require('sqlite');
+const sqlite3 = require('sqlite3').verbose();
 const PDFDocument = require('pdfkit');
 
 const app  = express();
@@ -19,108 +20,84 @@ const PORT = process.env.PORT || 3000;
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
 
-// ── Database Setup (MySQL) ───────────────────────────────────
+// ── Database Setup (SQLite Serverless) ───────────────────────────────────
 const MEDICINES_FILE = path.join(__dirname, 'data', 'medicines.json');
 
 let db;
 
 async function initDb() {
     try {
-        const connection = await mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: 'pajju@2005'
+        db = await open({
+            filename: path.join(__dirname, 'data', 'database.sqlite'),
+            driver: sqlite3.Database
         });
 
-        await connection.query('CREATE DATABASE IF NOT EXISTS medishop;');
-        await connection.end();
-
-        db = mysql.createPool({
-            host: 'localhost',
-            user: 'root',
-            password: 'pajju@2005',
-            database: 'medishop',
-            waitForConnections: true,
-            connectionLimit: 10,
-            queueLimit: 0
-        });
-
-        await db.query(`
+        await db.exec(`
             CREATE TABLE IF NOT EXISTS medicines (
-                id INT PRIMARY KEY AUTO_INCREMENT,
-                name VARCHAR(255),
-                generic VARCHAR(255),
-                brand VARCHAR(255),
-                category VARCHAR(255),
-                price FLOAT,
-                mrp FLOAT,
-                stock INT,
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                generic TEXT,
+                brand TEXT,
+                category TEXT,
+                price REAL,
+                mrp REAL,
+                stock INTEGER,
                 rx BOOLEAN,
-                icon VARCHAR(255),
-                color VARCHAR(255),
-                \`desc\` TEXT
-            )
-        `);
+                icon TEXT,
+                color TEXT,
+                desc TEXT
+            );
 
-        await db.query(`
             CREATE TABLE IF NOT EXISTS rx_uploads (
-                id INT PRIMARY KEY AUTO_INCREMENT,
-                filename VARCHAR(255),
-                originalName VARCHAR(255),
-                size INT,
-                mimetype VARCHAR(255),
-                uploadedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        `);
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                filename TEXT,
+                originalName TEXT,
+                size INTEGER,
+                mimetype TEXT,
+                uploadedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
 
-        await db.query(`
             CREATE TABLE IF NOT EXISTS orders (
-                id INT PRIMARY KEY AUTO_INCREMENT,
-                order_key VARCHAR(50) UNIQUE,
-                total FLOAT,
-                status VARCHAR(50) DEFAULT 'Pharmacy Verified',
-                createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                eta VARCHAR(50)
-            )
-        `);
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                order_key TEXT UNIQUE,
+                total REAL,
+                status TEXT DEFAULT 'Pharmacy Verified',
+                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                eta TEXT
+            );
 
-        await db.query(`
             CREATE TABLE IF NOT EXISTS notifications (
-                id INT PRIMARY KEY AUTO_INCREMENT,
-                email VARCHAR(255),
-                phone VARCHAR(255),
-                medicineId INT,
-                medicineName VARCHAR(255),
-                createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                email TEXT,
+                phone TEXT,
+                medicineId INTEGER,
+                medicineName TEXT,
+                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
         `);
 
-        const [rows] = await db.query('SELECT COUNT(*) as count FROM medicines');
-        if (rows[0].count === 0 && fs.existsSync(MEDICINES_FILE)) {
+        const row = await db.get('SELECT COUNT(*) as count FROM medicines');
+        if (row.count === 0 && fs.existsSync(MEDICINES_FILE)) {
             const list = JSON.parse(fs.readFileSync(MEDICINES_FILE, 'utf-8'));
             for (let m of list) {
-                await db.query(
-                    'INSERT INTO medicines (id, name, generic, brand, category, price, mrp, stock, rx, icon, color, `desc`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                await db.run(
+                    'INSERT INTO medicines (id, name, generic, brand, category, price, mrp, stock, rx, icon, color, desc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                     [m.id, m.name, m.generic, m.brand, m.category, m.price, m.mrp, m.stock, m.rx ? 1 : 0, m.icon, m.color, m.desc]
                 );
             }
-            console.log("MySQL Database seeded with initial medicines.");
+            console.log("SQLite Database seeded with initial medicines.");
         }
     } catch (err) {
-        console.error("MySQL Initialization Error:", err.message);
+        console.error("SQLite Initialization Error:", err.message);
     }
 }
 initDb();
 
 // ── Middleware ─────────────────────────────────────────────────
-// Security headers and settings
-app.use(helmet({
-    contentSecurityPolicy: false // Disabled for simplicity with the frontend assets
-}));
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors());
 app.use(compression());
-app.use(morgan('dev')); // Logging HTTP requests
-
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -136,14 +113,11 @@ const rxStorage = multer.diskStorage({
 
 const uploadRx = multer({
     storage: rxStorage,
-    limits: { fileSize: 5 * 1024 * 1024 },   // 5 MB
+    limits: { fileSize: 5 * 1024 * 1024 },
     fileFilter: (req, file, cb) => {
         const ok = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
-        if (ok.includes(file.mimetype)) {
-            cb(null, true);
-        } else {
-            cb(Object.assign(new Error('Only JPG, PNG or PDF files are accepted.'), { status: 400 }));
-        }
+        if (ok.includes(file.mimetype)) cb(null, true);
+        else cb(Object.assign(new Error('Only JPG, PNG or PDF files are accepted.'), { status: 400 }));
     }
 });
 
@@ -151,7 +125,7 @@ const uploadRx = multer({
 //  API ROUTES
 // ══════════════════════════════════════════════════════════════
 
-// GET /api/medicines  — full catalogue from MySQL Database
+// GET /api/medicines  — full catalogue
 app.get('/api/medicines', async (req, res) => {
     try {
         let sql = 'SELECT * FROM medicines';
@@ -171,12 +145,8 @@ app.get('/api/medicines', async (req, res) => {
             sql += " WHERE " + conditions.join(" AND ");
         }
 
-        const [rows] = await db.query(sql, params);
-        
-        const parsedRows = rows.map(r => ({
-            ...r,
-            rx: r.rx === 1
-        }));
+        const rows = await db.all(sql, params);
+        const parsedRows = rows.map(r => ({ ...r, rx: r.rx === 1 }));
         
         res.json(parsedRows);
     } catch (err) {
@@ -188,10 +158,9 @@ app.get('/api/medicines', async (req, res) => {
 // GET /api/medicines/:id  — single medicine
 app.get('/api/medicines/:id', async (req, res) => {
     try {
-        const [rows] = await db.query('SELECT * FROM medicines WHERE id = ?', [req.params.id]);
-        if (rows.length === 0) return res.status(404).json({ error: 'Medicine not found.' });
+        const row = await db.get('SELECT * FROM medicines WHERE id = ?', [req.params.id]);
+        if (!row) return res.status(404).json({ error: 'Medicine not found.' });
         
-        const row = rows[0];
         row.rx = row.rx === 1;
         res.json(row);
     } catch (err) {
@@ -199,16 +168,14 @@ app.get('/api/medicines/:id', async (req, res) => {
     }
 });
 
-// POST /api/rx-upload  — prescription file upload (Multer to MySQL)
+// POST /api/rx-upload  — prescription file upload
 app.post('/api/rx-upload', (req, res, next) => {
     uploadRx.single('prescription')(req, res, async (err) => {
-        if (err) {
-            return res.status(400).json({ error: err.message || 'File upload failed.' });
-        }
+        if (err) return res.status(400).json({ error: err.message || 'File upload failed.' });
         if (!req.file) return res.status(400).json({ error: 'No file received.' });
 
         try {
-            await db.query('INSERT INTO rx_uploads (filename, originalName, size, mimetype) VALUES (?, ?, ?, ?)', 
+            await db.run('INSERT INTO rx_uploads (filename, originalName, size, mimetype) VALUES (?, ?, ?, ?)', 
             [req.file.filename, req.file.originalname, req.file.size, req.file.mimetype]);
             
             res.json({
@@ -229,7 +196,7 @@ app.post('/api/notify', async (req, res) => {
         const { email, phone, medicineId, medicineName } = req.body;
         if (!email && !phone) return res.status(400).json({ error: 'Email or phone number is required.' });
 
-        await db.query('INSERT INTO notifications (email, phone, medicineId, medicineName) VALUES (?, ?, ?, ?)', 
+        await db.run('INSERT INTO notifications (email, phone, medicineId, medicineName) VALUES (?, ?, ?, ?)', 
         [email || null, phone || null, medicineId || null, medicineName || null]);
         
         res.json({ success: true, message: "You'll be notified when the medicine is back in stock." });
@@ -245,15 +212,12 @@ app.post('/api/checkout', async (req, res) => {
         const { items, total } = req.body;
         if (!items || !items.length) return res.status(400).json({ error: 'Cart is empty.' });
 
-        // Generate a random order ID (e.g. MS-2026-642)
         const orderKey = `MS-${new Date().getFullYear()}-${Math.floor(Math.random() * 900) + 100}`;
-        
-        // Calculate ETA string
         const etaDate = new Date();
         etaDate.setDate(etaDate.getDate() + 3);
         const etaParams = { month: 'short', day: 'numeric', year: 'numeric' };
         
-        await db.query('INSERT INTO orders (order_key, total, eta) VALUES (?, ?, ?)', 
+        await db.run('INSERT INTO orders (order_key, total, eta) VALUES (?, ?, ?)', 
         [orderKey, total, etaDate.toLocaleDateString('en-US', etaParams)]);
         
         res.json({ success: true, orderId: orderKey, message: 'Order placed successfully!' });
@@ -266,25 +230,16 @@ app.post('/api/checkout', async (req, res) => {
 // GET /api/track/:orderId  — track real orders from DB 
 app.get('/api/track/:orderId', async (req, res) => {
     try {
-        const [rows] = await db.query('SELECT * FROM orders WHERE order_key = ?', [req.params.orderId.toUpperCase()]);
+        const row = await db.get('SELECT * FROM orders WHERE order_key = ?', [req.params.orderId.toUpperCase()]);
         
-        if (rows.length > 0) {
-            const orderRaw = rows[0];
-            const created = new Date(orderRaw.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            res.json({
-                step: 2, // Defaulting to Pharmacy verified currently
-                items: "Your Custom Order",
-                date: created,
-                eta: orderRaw.eta
-            });
+        if (row) {
+            const created = new Date(row.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            res.json({ step: 2, items: "Your Custom Order", date: created, eta: row.eta });
             return;
         }
 
-        // Fallback demo orders for testing if missing
         const ORDERS = {
             'MS-2024-001': { step: 3, items: 'Crocin Advance, Limcee 500',    date: 'Apr 12, 2026', eta: 'Apr 16, 2026' },
-            'MS-2024-002': { step: 5, items: 'Pantocid 40, Glucophage 500',   date: 'Apr 10, 2026', eta: 'Delivered'    },
-            'MS-2024-003': { step: 1, items: 'Allegra 120',                    date: 'Apr 14, 2026', eta: 'Apr 18, 2026' },
             'DEMO':        { step: 2, items: 'Demo Order — MediShop',          date: 'Today',        eta: 'In 2–3 days'  },
         };
         const order = ORDERS[req.params.orderId.toUpperCase()];
@@ -300,28 +255,16 @@ app.get('/api/track/:orderId', async (req, res) => {
 app.get('/api/generate-prescription', (req, res) => {
     try {
         const { patientName = 'John Doe', medicineName = 'Amoxicillin 500mg' } = req.query;
-
-        // Create a PDF document
         const doc = new PDFDocument({ margin: 50 });
 
-        // Pipe directly to the HTTP response
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', `attachment; filename=Prescription-${patientName.replace(/\s+/g, '-')}.pdf`);
         doc.pipe(res);
 
-        // Header Background
         doc.rect(0, 0, doc.page.width, 100).fill('#2563eb');
-        
-        // Header Text
-        doc.fillColor('white').fontSize(24).font('Helvetica-Bold')
-           .text('CITY GENERAL HOSPITAL', 50, 35, { align: 'center' });
-        doc.fontSize(10).font('Helvetica')
-           .text('123 Health Avenue, Medical District | Ph: (555) 012-3456', 50, 65, { align: 'center' });
-
-        // Add a line separator
+        doc.fillColor('white').fontSize(24).font('Helvetica-Bold').text('CITY GENERAL HOSPITAL', 50, 35, { align: 'center' });
+        doc.fontSize(10).font('Helvetica').text('123 Health Avenue, Medical District | Ph: (555) 012-3456', 50, 65, { align: 'center' });
         doc.moveTo(50, 120).lineTo(550, 120).fillColor('black').stroke();
-
-        // Prescription Metadata
         doc.fillColor('black').fontSize(12).font('Helvetica-Bold');
         doc.text('PRESCRIPTION NOTE', 50, 140, { align: 'center', underline: true });
         
@@ -329,27 +272,17 @@ app.get('/api/generate-prescription', (req, res) => {
         doc.font('Helvetica').fontSize(11).text(`Date: ${currentDate}`, 50, 180);
         doc.text(`Patient Name: ${patientName}`, 50, 200);
         doc.text(`Patient ID: ${Math.floor(Math.random() * 90000) + 10000}`, 50, 220);
-
-        // Rx Symbol
         doc.fontSize(36).font('Helvetica-Bold').fillColor('#2563eb').text('Rx', 50, 270);
         
-        // Medicine Details
         doc.fillColor('black').fontSize(14).text(`${medicineName}`, 110, 290);
-        
         doc.fontSize(11).font('Helvetica-Oblique');
         doc.text('Directions:', 110, 315);
         doc.font('Helvetica').text('Take 1 dose orally twice a day for 5 days. \nDo not skip doses.', 110, 335);
-
-        // Doctor Signature Area
         doc.moveTo(350, 500).lineTo(500, 500).stroke();
         doc.fontSize(10).font('Helvetica').text('Dr. Sarah Sterling, M.D.', 350, 510, { align: 'center', width: 150 });
         doc.text('License #MD998A21', 350, 525, { align: 'center', width: 150 });
+        doc.fontSize(8).fillColor('grey').text('This is a simulated prescription generated for educational purposes.', 50, 700, { align: 'center' });
 
-        // Footer
-        doc.fontSize(8).fillColor('grey')
-           .text('This is a simulated prescription generated for educational purposes.', 50, 700, { align: 'center' });
-
-        // Finalize PDF file
         doc.end();
     } catch (error) {
         console.error('Error generating prescription:', error);
@@ -357,18 +290,16 @@ app.get('/api/generate-prescription', (req, res) => {
     }
 });
 
-// GET /api/health  — health check for production uptime monitoring
+// GET /api/health
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date().toISOString() }));
 
-// ── SPA catch-all: always serve index.html ────────────────────
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// ─────────────────────────────────────────────────────────────
 // Graceful shutdown handling
 process.on('SIGINT', async () => {
-    if (db) await db.end();
+    if (db) await db.close();
     console.log('Closed the database connection.');
     process.exit(0);
 });
