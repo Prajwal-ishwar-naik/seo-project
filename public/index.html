@@ -42,6 +42,14 @@
             <div id="search-dropdown" class="search-dropdown hidden"></div>
         </div>
 
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html#main-content" class="nav-link">Shop</a>
+            <a href="index.html#hero" class="nav-link">Categories</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="index.html#testimonials-section" class="nav-link">Testimonials</a>
+        </nav>
+
         <div class="header-actions">
             <button class="btn-rx-upload" id="open-rx-modal">
                 <i class="fas fa-file-medical"></i><span>Upload Rx</span>
@@ -165,22 +173,120 @@
 </main>
 
 <!-- ═══════════════════════════════════════════
+     BLOG PREVIEW SECTION
+     Premium health insights & news
+═══════════════════════════════════════════ -->
+<section id="blog-preview">
+    <div class="section-container">
+        <div class="section-header">
+            <div>
+                <h2>Health <span class="gradient-text">Insights</span></h2>
+                <p>Expert advice and the latest health news from our medical team.</p>
+            </div>
+            <a href="blog.html" class="btn-outline-sm">View All Articles</a>
+        </div>
+        
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-img">
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800" alt="Vitamin C benefits" onerror="this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800'">
+                    <span class="blog-tag">Nutrition</span>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">March 24, 2026</span>
+                    <h3>Why Vitamin C is Essential This Season</h3>
+                    <p>Discover how Vitamin C boosts your immune system and which supplements are best for you.</p>
+                    <a href="blog.html" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-img">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800" alt="Mental health tips" onerror="this.src='https://images.unsplash.com/photo-1518107616985-bd48230d3b20?auto=format&fit=crop&q=80&w=800'">
+                    <span class="blog-tag">Wellbeing</span>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">April 02, 2026</span>
+                    <h3>Managing Workplace Stress Effectively</h3>
+                    <p>Practical tips from psychologists to maintain your mental peace in a high-pressure environment.</p>
+                    <a href="blog.html" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-img">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Daily Yoga" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca67ad48b6e?auto=format&fit=crop&q=80&w=800'">
+                    <span class="blog-tag">Fitness</span>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">April 10, 2026</span>
+                    <h3>15 Minutes of Yoga: A Daily Ritual</h3>
+                    <p>How a small commitment to movement can transform your physical health and flexibility.</p>
+                    <a href="blog.html" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
      ORDER TRACKING SECTION
 ═══════════════════════════════════════════ -->
-<section id="tracking-section">
-    <div class="tracking-inner">
-        <div class="tracking-title">
-            <i class="fas fa-location-crosshairs"></i>
-            <div>
-                <h2>Track Your Order</h2>
-                <p>Real-time delivery updates. Try: <strong>MS-2024-001</strong> or <strong>DEMO</strong></p>
+<!-- ═══════════════════════════════════════════
+     TRUST & TESTIMONIALS SECTION
+═══════════════════════════════════════════ -->
+<section id="testimonials-section">
+    <div class="section-container">
+        <div class="testi-header">
+            <span class="hero-tag" style="background:rgba(37,99,235,.1); color:var(--primary); border-color:var(--primary);"><i class="fas fa-star"></i> Top Rated Pharmacy</span>
+            <h2>What Our <span class="gradient-text">Patients Say</span></h2>
+            <p>Reliable healthcare for millions of families across the country.</p>
+        </div>
+
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"The fastest delivery I've ever experienced. My medicines arrived in less than 24 hours, and the prescription upload was seamless."</p>
+                <div class="testi-user">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Rahul S.">
+                    <div>
+                        <strong>Rahul Sharma</strong>
+                        <span>Verified Customer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"I love the drug interaction alerts! It makes me feel much safer knowing the pharmacy is cross-checking my medications automatically."</p>
+                <div class="testi-user">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Priya K.">
+                    <div>
+                        <strong>Priya Kapoor</strong>
+                        <span>Verified Customer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i></div>
+                <p>"Excellent customer service and very competitive pricing compared to local stores. The app is incredibly easy to use."</p>
+                <div class="testi-user">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100" alt="Amit V.">
+                    <div>
+                        <strong>Amit Verma</strong>
+                        <span>Verified Customer</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="tracking-input-wrap">
-            <input type="text" id="order-id-input" placeholder="Enter Order ID (e.g. MS-2024-001)">
-            <button id="track-btn"><i class="fas fa-location-arrow"></i> Track</button>
+
+        <div class="trust-strip">
+            <div class="trust-item"><i class="fas fa-certificate"></i> <span>100% Genuine</span></div>
+            <div class="trust-item"><i class="fas fa-truck-fast"></i> <span>Express Delivery</span></div>
+            <div class="trust-item"><i class="fas fa-user-shield"></i> <span>Secure Payments</span></div>
+            <div class="trust-item"><i class="fas fa-headset"></i> <span>24/7 Support</span></div>
         </div>
-        <div id="tracking-result" class="hidden"></div>
     </div>
 </section>
 
@@ -293,18 +399,45 @@
 <div id="checkout-modal" class="modal-backdrop hidden">
     <div class="modal">
         <div class="modal-header">
-            <h3><i class="fas fa-truck-fast"></i> Delivery Details</h3>
+            <h3><i class="fas fa-truck-fast"></i> Secure Checkout</h3>
             <button class="close-modal" aria-label="Close"><i class="fas fa-xmark"></i></button>
         </div>
         <div class="modal-body">
-            <div style="display:flex; flex-direction:column; gap:12px;">
-                <input type="text" id="chk-name" placeholder="Full Name" required style="padding:10px; border:1px solid #ddd; border-radius:8px;">
-                <input type="tel" id="chk-phone" placeholder="Phone Number" required style="padding:10px; border:1px solid #ddd; border-radius:8px;">
-                <textarea id="chk-address" placeholder="Full Delivery Address" rows="3" required style="padding:10px; border:1px solid #ddd; border-radius:8px; font-family:inherit; resize:vertical;"></textarea>
-                <div style="background:#f8fafc; padding:15px; border-radius:8px; border:1px solid #e2e8f0; margin-top:5px;">
-                    <strong style="display:block; margin-bottom:8px; color:#334155;">Payment Method</strong>
-                    <label class="filter-check" style="margin-bottom:5px;"><input type="radio" name="payment" value="cod" checked> Cash on Delivery (COD)</label>
-                    <label class="filter-check"><input type="radio" name="payment" value="upi"> UPI / Online Payment</label>
+            <div id="chk-delivery-view">
+                <h4 style="margin-bottom:15px; font-size:1rem;">Delivery Address</h4>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    <input type="text" id="chk-name" placeholder="Full Name" required style="padding:10px; border:1.5px solid #e2e8f0; border-radius:8px; font-family:inherit;">
+                    <input type="tel" id="chk-phone" placeholder="Phone Number" required style="padding:10px; border:1.5px solid #e2e8f0; border-radius:8px; font-family:inherit;">
+                    <textarea id="chk-address" placeholder="Full Delivery Address" rows="3" required style="padding:10px; border:1.5px solid #e2e8f0; border-radius:8px; font-family:inherit; resize:none;"></textarea>
+                </div>
+                
+                <h4 style="margin:20px 0 12px; font-size:1rem;">Payment Method</h4>
+                <div class="payment-options">
+                    <label class="pay-option">
+                        <input type="radio" name="payment" value="cod" checked>
+                        <div class="pay-card">
+                            <i class="fas fa-hand-holding-dollar"></i>
+                            <span>Cash on Delivery</span>
+                        </div>
+                    </label>
+                    <label class="pay-option">
+                        <input type="radio" name="payment" value="upi">
+                        <div class="pay-card">
+                            <i class="fas fa-mobile-screen-button"></i>
+                            <span>UPI / Online</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div id="chk-payment-view" class="hidden" style="text-align:center; padding:10px 0;">
+                <h4 style="margin-bottom:15px;">Scan to Pay</h4>
+                <div style="background:#fff; padding:15px; border-radius:12px; border:1px solid #e2e8f0; display:inline-block; margin-bottom:15px;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=medishop@bank&pn=MediShop&am=0&cu=INR" alt="Payment QR" style="display:block;">
+                </div>
+                <p style="font-size:0.85rem; color:var(--text-3);">Scan the QR code using any UPI app (GPay, PhonePe, Paytm) to complete your payment of <strong id="chk-pay-amount">₹0</strong>.</p>
+                <div style="margin-top:20px; font-size:0.8rem; color:var(--success); font-weight:600;">
+                    <i class="fas fa-lock"></i> Secure Encrypted Transaction
                 </div>
             </div>
         </div>
@@ -314,6 +447,68 @@
         </div>
     </div>
 </div>
+
+<!-- ═══════════════════════════════════════════
+     SECURE FOOTER
+═══════════════════════════════════════════ -->
+<footer id="main-footer">
+    <div class="footer-upper">
+        <div class="footer-brand">
+            <a class="logo" href="#"><i class="fas fa-circle-plus"></i><span>Medi<strong>Shop</strong></span></a>
+            <p>Your trusted partner for healthcare. Providing 100% genuine medicines delivered directly to your doorstep with care.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#main-content">Shop Medicines</a></li>
+                <li><a href="#tracking-section">Track Order</a></li>
+                <li><a href="blog.html">Health Blog</a></li>
+                <li><a href="login.html">My Account</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h4>Customer Service</h4>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Returns Policy</a></li>
+                <li><a href="#">Prescription Guide</a></li>
+                <li><a href="#">Shipping Details</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact Info</h4>
+            <ul>
+                <li><i class="fas fa-location-dot"></i> 123 Healthcare Plaza, Medical District, Mumbai</li>
+                <li><i class="fas fa-phone"></i> +91 1800-MED-SHOP</li>
+                <li><i class="fas fa-envelope"></i> care@medishop.com</li>
+                <li><i class="fas fa-clock"></i> 24/7 Delivery Available</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <p>&copy; 2026 MediShop Pharmacy. All rights reserved.</p>
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-google-pay"></i>
+                <i class="fab fa-apple-pay"></i>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!-- Toast -->
 <div id="toast" class="toast hidden"></div>

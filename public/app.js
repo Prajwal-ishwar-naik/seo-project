@@ -657,6 +657,27 @@ $(function () {
     });
 
     $('#confirm-order-btn').on('click', function () {
+        const method = $('input[name="payment"]:checked').val();
+        
+        // If first step and UPI, show payment view
+        if ($('#chk-payment-view').hasClass('hidden') && method === 'upi') {
+            const name = $('#chk-name').val().trim();
+            const phone = $('#chk-phone').val().trim();
+            const address = $('#chk-address').val().trim();
+
+            if (!name || !phone || !address) {
+                toast('<i class="fas fa-circle-exclamation"></i> Please fill in all delivery details!', 'warning');
+                return;
+            }
+
+            $('#chk-pay-amount').text('₹' + Cart.total());
+            $('#chk-delivery-view').fadeOut(300, function() {
+                $('#chk-payment-view').removeClass('hidden').hide().fadeIn(300);
+                $('#confirm-order-btn').html('<i class="fas fa-circle-check"></i> I have Paid - Complete Order');
+            });
+            return;
+        }
+
         const name = $('#chk-name').val().trim();
         const phone = $('#chk-phone').val().trim();
         const address = $('#chk-address').val().trim();
@@ -667,7 +688,7 @@ $(function () {
         }
 
         const items = Cart.get();
-        const $btn = $(this).html('<i class="fas fa-spinner fa-spin"></i> Processing…').prop('disabled', true);
+        const $btn = $(this).html('<i class="fas fa-spinner fa-spin"></i> Processing Securely…').prop('disabled', true);
         
         $.ajax({
             url: '/api/checkout',
@@ -676,35 +697,48 @@ $(function () {
             data: JSON.stringify({ 
                 items: items, 
                 total: Cart.total(),
-                customer: { name, phone, address, paymentMethod: $('input[name="payment"]:checked').val() }
+                customer: { name, phone, address, paymentMethod: method }
             }),
             success: function (res) {
                 closeModal('#checkout-modal');
-                toast(`<i class="fas fa-box"></i> ${res.message}`, 'success');
+                toast(`<i class="fas fa-box-content"></i> <strong>Success!</strong> ${res.message}`, 'success');
                 Cart.save([]);
                 renderCart();
                 updateBadge();
                 rxVerified = false;
                 $('#checkout-btn').html('<i class="fas fa-lock"></i> Proceed to Checkout');
                 
-                // Reset form
+                // Reset form and views
                 $('#chk-name, #chk-phone, #chk-address').val('');
+                $('#chk-delivery-view').show();
+                $('#chk-payment-view').addClass('hidden');
+                $('#confirm-order-btn').html('<i class="fas fa-check"></i> Place Order');
                 
-                // Auto-trigger tracking
-                setTimeout(() => {
-                    $('#order-id-input').val(res.orderId);
-                    $('html,body').animate({ scrollTop: $('#tracking-section').offset().top - 75 }, 600);
-                    $('#track-btn').trigger('click');
-                }, 1000);
+                // Show order success animation (simulated)
+                showOrderSuccess(res.orderId);
             },
             error: function () {
                 toast('<i class="fas fa-circle-xmark"></i> Checkout failed. Please try again.', 'warning');
             },
             complete: function () {
-                $btn.html('<i class="fas fa-check"></i> Place Order').prop('disabled', false);
+                $btn.prop('disabled', false);
             }
         });
     });
+
+    function showOrderSuccess(orderId) {
+        $('body').append(`
+            <div id="order-success-overlay" style="position:fixed; inset:0; background:rgba(255,255,255,0.98); z-index:2000; display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem;">
+                <div class="success-anim-wrap">
+                    <div style="font-size:5rem; color:var(--success); margin-bottom:1.5rem;"><i class="fas fa-circle-check fa-bounce"></i></div>
+                    <h1 style="font-size:2.5rem; margin-bottom:1rem;">Order Placed!</h1>
+                    <p style="font-size:1.2rem; color:var(--text-2); margin-bottom:2rem;">Your order <strong>${orderId}</strong> has been received and is being processed.</p>
+                    <button class="btn-primary" onclick="$('#order-success-overlay').fadeOut(400, function(){ $(this).remove(); });">Back to Home</button>
+                    <p style="margin-top:2rem; font-size:0.9rem; color:var(--text-3);">You can track this order in your Account section.</p>
+                </div>
+            </div>
+        `);
+    }
 
     function openCart()  { $('#cart-sidebar, #cart-overlay').removeClass('hidden'); setTimeout(() => $('#cart-sidebar').addClass('open'), 10); }
     function closeCart() { $('#cart-sidebar').removeClass('open'); setTimeout(() => $('#cart-sidebar, #cart-overlay').addClass('hidden'), 360); }

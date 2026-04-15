@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MediShop Blog — Latest health insights, medical news, and wellness tips. Stay informed with our expert articles.">
+    <meta name="keywords" content="health blog, medical news, wellness tips, pharmacy blog, MediShop">
+    <meta name="author" content="MediShop">
+    <title>Blog | MediShop Health Insights & News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+            padding: 8rem 1.5rem 6rem;
+            text-align: center;
+            color: #fff;
+        }
+        .blog-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        .blog-hero p {
+            color: #94A3B8;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 1.5rem;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 68px;
+            z-index: 100;
+        }
+        .blog-filter-btn {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-2);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .blog-filter-btn:hover, .blog-filter-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .blog-listing {
+            padding: 4rem 1.5rem;
+            background: var(--bg);
+        }
+        
+        .blog-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .blog-filters {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 1.2rem 1.5rem;
+            }
+            .blog-filter-btn {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<header id="site-header">
+    <div class="header-inner">
+        <a class="logo" href="index.html"><i class="fas fa-circle-plus"></i><span>Medi<strong>Shop</strong></span></a>
+
+        <div class="search-wrap">
+            <i class="fas fa-magnifying-glass search-icon"></i>
+            <input type="text" id="live-search" placeholder="Search articles…" autocomplete="off">
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html#main-content" class="nav-link">Shop</a>
+            <a href="index.html#hero" class="nav-link">Categories</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="index.html#testimonials-section" class="nav-link">Testimonials</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn-rx-upload" id="open-rx-modal">
+                <i class="fas fa-file-medical"></i><span>Upload Rx</span>
+            </button>
+            <a href="login.html" class="btn-account" aria-label="Account" style="text-decoration:none;">
+                <i class="fas fa-circle-user"></i><span>Account</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="blog-hero">
+        <div class="blog-container">
+            <h1>Health <span class="gradient-text">Insights</span></h1>
+            <p>Your source for expert medical advice, wellness tips, and the latest healthcare innovations.</p>
+        </div>
+    </section>
+
+    <div class="blog-filters">
+        <button class="blog-filter-btn active">All Articles</button>
+        <button class="blog-filter-btn">Nutrition</button>
+        <button class="blog-filter-btn">Wellbeing</button>
+        <button class="blog-filter-btn">Fitness</button>
+        <button class="blog-filter-btn">Medical News</button>
+        <button class="blog-filter-btn">Common Ailments</button>
+    </div>
+
+    <section class="blog-listing">
+        <div class="blog-container">
+            <div class="blog-grid" id="blog-listing-grid">
+                <!-- Articles will be here -->
+                <article class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800" alt="Vitamin C" onerror="this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800'">
+                        <span class="blog-tag">Nutrition</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">March 24, 2026</span>
+                        <h3>Why Vitamin C is Essential This Season</h3>
+                        <p>Discover how Vitamin C boosts your immune system and which supplements are best for you. We explore the top sources and how much you really need.</p>
+                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800" alt="Stress Management" onerror="this.src='https://images.unsplash.com/photo-1518107616985-bd48230d3b20?auto=format&fit=crop&q=80&w=800'">
+                        <span class="blog-tag">Wellbeing</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">April 02, 2026</span>
+                        <h3>Managing Workplace Stress Effectively</h3>
+                        <p>Practical tips from psychologists to maintain your mental peace in a high-pressure environment. Learn about meditation, boundary setting, and more.</p>
+                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Yoga" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca67ad48b6e?auto=format&fit=crop&q=80&w=800'">
+                        <span class="blog-tag">Fitness</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">April 10, 2026</span>
+                        <h3>15 Minutes of Yoga: A Daily Ritual</h3>
+                        <p>How a small commitment to movement can transform your physical health and flexibility. Simple poses for beginners that you can do anywhere.</p>
+                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=800" alt="Medicine" onerror="this.src='https://images.unsplash.com/photo-1512678103131-c45a3c36845c?auto=format&fit=crop&q=80&w=800'">
+                        <span class="blog-tag">Medical News</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">April 12, 2026</span>
+                        <h3>The Future of Personalized Medicine</h3>
+                        <p>How genetic testing is changing how we treat chronic diseases. A look into the next decade of healthcare technology and patient care.</p>
+                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1542884748-2b87b36c6b90?auto=format&fit=crop&q=80&w=800" alt="Hydration" onerror="this.src='https://images.unsplash.com/photo-1556760544-74c17e0344bb?auto=format&fit=crop&q=80&w=800'">
+                        <span class="blog-tag">Nutrition</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">April 14, 2026</span>
+                        <h3>Hydration: More Than Just Drinking Water</h3>
+                        <p>Electrolytes, water-rich foods, and the science of staying hydrated during the summer heat. Why pure water might not be enough for athletes.</p>
+                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800" alt="Blood Pressure" onerror="this.src='https://images.unsplash.com/photo-1576091160550-217359f42f8c?auto=format&fit=crop&q=80&w=800'">
+                        <span class="blog-tag">Common Ailments</span>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">April 15, 2026</span>
+                        <h3>Understanding Blood Pressure Numbers</h3>
+                        <p>What do systolic and diastolic mean? A clear guide to reading your monitor and when to consult a doctor About your readings.</p>
+                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ═══════════════════════════════════════════
+     SECURE FOOTER
+═══════════════════════════════════════════ -->
+<footer id="main-footer">
+    <div class="footer-upper">
+        <div class="footer-brand">
+            <a class="logo" href="index.html"><i class="fas fa-circle-plus"></i><span>Medi<strong>Shop</strong></span></a>
+            <p>Your trusted partner for healthcare. Providing 100% genuine medicines delivered directly to your doorstep with care.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#main-content">Shop Medicines</a></li>
+                <li><a href="index.html#tracking-section">Track Order</a></li>
+                <li><a href="blog.html">Health Blog</a></li>
+                <li><a href="login.html">My Account</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h4>Customer Service</h4>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Returns Policy</a></li>
+                <li><a href="#">Prescription Guide</a></li>
+                <li><a href="#">Shipping Details</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact Info</h4>
+            <ul>
+                <li><i class="fas fa-location-dot"></i> 123 Healthcare Plaza, Medical District, Mumbai</li>
+                <li><i class="fas fa-phone"></i> +91 1800-MED-SHOP</li>
+                <li><i class="fas fa-envelope"></i> care@medishop.com</li>
+                <li><i class="fas fa-clock"></i> 24/7 Delivery Available</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <p>&copy; 2026 MediShop Pharmacy. All rights reserved.</p>
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-google-pay"></i>
+                <i class="fab fa-apple-pay"></i>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // Simple filter logic
+    $('.blog-filter-btn').on('click', function() {
+        $('.blog-filter-btn').removeClass('active');
+        $(this).addClass('active');
+        
+        const filter = $(this).text();
+        if (filter === 'All Articles') {
+            $('.blog-card').show();
+        } else {
+            $('.blog-card').hide();
+            $(`.blog-tag:contains("${filter}")`).closest('.blog-card').show();
+        }
+    });
+
+    // Header scroll effect
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) {
+            $('#site-header').addClass('scrolled');
+        } else {
+            $('#site-header').removeClass('scrolled');
+        }
+    });
+</script>
+</body>
+</html>
