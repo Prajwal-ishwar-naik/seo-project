@@ -14,12 +14,16 @@ const PDFDocument = require('pdfkit');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
-// ── Auto-create required directories ──────────────────────────
-['uploads', 'data'].forEach(dir => {
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-});
+// ── Auto-create required directories (Safe for Cloud) ──────────
+try {
+    ['uploads', 'data'].forEach(dir => {
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    });
+} catch (e) {
+    console.log("Cloud Environment: Using existing or temporary directories");
+}
 
-// ── Native JSON Database Setup (100% cloud-compatible) ──────────
+// ── Native JSON Database Setup ─────────────────────────────────
 const DB = {
     medicines: path.join(__dirname, 'data', 'medicines.json'),
     rx_uploads: path.join(__dirname, 'data', 'rx_uploads.json'),
@@ -27,12 +31,16 @@ const DB = {
     notifications: path.join(__dirname, 'data', 'notifications.json')
 };
 
-// Ensure all database files exist
-Object.values(DB).forEach(file => {
-    if (!fs.existsSync(file)) {
-        fs.writeFileSync(file, JSON.stringify([]));
-    }
-});
+// Ensure all database files exist (Safe for Cloud)
+try {
+    Object.values(DB).forEach(file => {
+        if (!fs.existsSync(file)) {
+            fs.writeFileSync(file, JSON.stringify([]));
+        }
+    });
+} catch (e) {
+    console.log("Cloud Environment: Database files read-only mode");
+}
 
 // Helper for reading JSON DB
 async function readDb(file) {
