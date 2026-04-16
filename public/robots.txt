@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /uploads/
 
-Sitemap: https://medishop-example.com/sitemap.xml
+Sitemap: https://seo-project-eight.vercel.app/sitemap.xml
