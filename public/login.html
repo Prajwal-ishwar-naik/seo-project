@@ -44,7 +44,7 @@
     <div class="auth-right">
 
         <!-- ── LOGIN FORM ── -->
-        <div class="form-card" id="login-card">
+        <form class="form-card" id="login-card" action="/api/login" method="POST">
             <div class="form-head">
                 <h1>Sign In</h1>
                 <p>Welcome back — let's get your medicines</p>
@@ -54,14 +54,14 @@
 
             <div class="field-group">
                 <label for="login-email"><i class="fas fa-envelope"></i> Email Address</label>
-                <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email">
+                <input type="email" id="login-email" name="email" placeholder="you@example.com" autocomplete="username">
                 <span class="field-err" id="login-email-err"></span>
             </div>
 
             <div class="field-group">
-                <label for="login-pass"><i class="fas fa-lock"></i> Password</label>
+                <label for="login-pass"><i class="fas fa-lock"></i> Access Code</label>
                 <div class="pass-wrap">
-                    <input type="password" id="login-pass" placeholder="Enter your password" autocomplete="current-password">
+                    <input type="password" id="login-pass" name="password" placeholder="Enter your access code" autocomplete="current-password">
                     <button class="toggle-pass" type="button" data-target="login-pass" tabindex="-1"><i class="fas fa-eye"></i></button>
                 </div>
                 <span class="field-err" id="login-pass-err"></span>
@@ -72,7 +72,7 @@
                 <a href="#" class="forgot-link">Forgot password?</a>
             </div>
 
-            <button class="btn-submit" id="login-submit">
+            <button type="submit" class="btn-submit" id="login-submit">
                 <span class="btn-text"><i class="fas fa-right-to-bracket"></i> Sign In</span>
                 <span class="btn-loader hidden"><i class="fas fa-spinner fa-spin"></i> Signing in…</span>
             </button>
@@ -85,10 +85,10 @@
             </div>
 
             <p class="switch-text">New to MediShop? <a href="#" id="go-register">Create an account</a></p>
-        </div>
+        </form>
 
         <!-- ── REGISTER FORM ── -->
-        <div class="form-card hidden-form" id="register-card">
+        <form class="form-card hidden-form" id="register-card" action="/api/register" method="POST">
             <div class="form-head">
                 <h1>Create Account</h1>
                 <p>Join 2M+ customers — starts free</p>
@@ -99,25 +99,25 @@
             <div class="form-row-2">
                 <div class="field-group">
                     <label for="reg-name"><i class="fas fa-user"></i> Full Name</label>
-                    <input type="text" id="reg-name" placeholder="Prajwal Naik" autocomplete="name">
+                    <input type="text" id="reg-name" name="name" placeholder="Prajwal Naik" autocomplete="name">
                     <span class="field-err" id="reg-name-err"></span>
                 </div>
                 <div class="field-group">
                     <label for="reg-phone"><i class="fas fa-mobile-screen"></i> Phone</label>
-                    <input type="tel" id="reg-phone" placeholder="+91 9XXXXXXXXX" autocomplete="tel">
+                    <input type="tel" id="reg-phone" name="phone" placeholder="+91 9XXXXXXXXX" autocomplete="tel">
                 </div>
             </div>
 
             <div class="field-group">
                 <label for="reg-email"><i class="fas fa-envelope"></i> Email Address</label>
-                <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email">
+                <input type="email" id="reg-email" name="email" placeholder="you@example.com" autocomplete="username">
                 <span class="field-err" id="reg-email-err"></span>
             </div>
 
             <div class="field-group">
-                <label for="reg-pass"><i class="fas fa-lock"></i> Password</label>
+                <label for="reg-pass"><i class="fas fa-lock"></i> Access Code</label>
                 <div class="pass-wrap">
-                    <input type="password" id="reg-pass" placeholder="Min. 6 characters" autocomplete="new-password">
+                    <input type="password" id="reg-pass" name="password" placeholder="Min. 6 characters" autocomplete="new-password">
                     <button class="toggle-pass" type="button" data-target="reg-pass" tabindex="-1"><i class="fas fa-eye"></i></button>
                 </div>
                 <div class="strength-bar" id="strength-bar">
@@ -128,9 +128,9 @@
             </div>
 
             <div class="field-group">
-                <label for="reg-confirm"><i class="fas fa-lock-open"></i> Confirm Password</label>
+                <label for="reg-confirm"><i class="fas fa-lock-open"></i> Confirm Access Code</label>
                 <div class="pass-wrap">
-                    <input type="password" id="reg-confirm" placeholder="Repeat password" autocomplete="new-password">
+                    <input type="password" id="reg-confirm" name="confirm_password" placeholder="Repeat access code" autocomplete="new-password">
                     <button class="toggle-pass" type="button" data-target="reg-confirm" tabindex="-1"><i class="fas fa-eye"></i></button>
                 </div>
                 <span class="field-err" id="reg-confirm-err"></span>
@@ -141,13 +141,13 @@
                 I agree to the <a href="#" target="_blank">Terms of Service</a> &amp; <a href="#" target="_blank">Privacy Policy</a>
             </label>
 
-            <button class="btn-submit" id="register-submit">
+            <button type="submit" class="btn-submit" id="register-submit">
                 <span class="btn-text"><i class="fas fa-user-plus"></i> Create Account</span>
                 <span class="btn-loader hidden"><i class="fas fa-spinner fa-spin"></i> Creating account…</span>
             </button>
 
             <p class="switch-text">Already have an account? <a href="#" id="go-login">Sign in</a></p>
-        </div>
+        </form>
 
         <!-- ── SUCCESS STATE ── -->
         <div class="form-card success-card hidden-form" id="success-card">

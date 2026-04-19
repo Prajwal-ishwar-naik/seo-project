@@ -113,7 +113,8 @@ $(function () {
     // ═══════════════════════════════════════════════════════
     //  LOGIN FORM SUBMIT
     // ═══════════════════════════════════════════════════════
-    $('#login-submit').on('click', function () {
+    $('#login-card').on('submit', function (e) {
+        e.preventDefault();
         const email = $('#login-email').val().trim();
         const pass  = $('#login-pass').val();
         let valid   = true;
@@ -127,7 +128,7 @@ $(function () {
         if (!valid) return;
 
         // Simulate API call
-        const $btn = $(this);
+        const $btn = $('#login-submit');
         $btn.addClass('loading').prop('disabled', true);
         $btn.find('.btn-text').addClass('hidden');
         $btn.find('.btn-loader').removeClass('hidden');
@@ -141,7 +142,8 @@ $(function () {
     // ═══════════════════════════════════════════════════════
     //  REGISTER FORM SUBMIT (Animated Success)
     // ═══════════════════════════════════════════════════════
-    $('#register-submit').on('click', function () {
+    $('#register-card').on('submit', function (e) {
+        e.preventDefault();
         const name  = $('#reg-name').val().trim();
         const email = $('#reg-email').val().trim();
         const pass  = $('#reg-pass').val();
@@ -171,7 +173,7 @@ $(function () {
         if (!valid) return;
 
         // Simulate API call for Registration
-        const $btn = $(this);
+        const $btn = $('#register-submit');
         $btn.addClass('loading').prop('disabled', true);
         $btn.find('.btn-text').addClass('hidden');
         $btn.find('.btn-loader').removeClass('hidden');
