@@ -270,6 +270,17 @@ app.get('/api/generate-prescription', (req, res) => {
 // GET /api/health
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date().toISOString() }));
 
+// ── Explicit SEO Routes (Ensures Google doesn't see HTML for these) ──
+app.get('/sitemap.xml', (req, res) => {
+    res.set('Content-Type', 'application/xml');
+    res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
+app.get('/robots.txt', (req, res) => {
+    res.set('Content-Type', 'text/plain');
+    res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
