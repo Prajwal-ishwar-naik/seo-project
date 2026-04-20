@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <!-- Home Page -->
     <url>
-        <loc>https://seo-project-mpa2.vercel.app/</loc>
+        <loc>https://seo-project-y8u1.vercel.app/</loc>
         <lastmod>2026-04-19</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -10,7 +10,7 @@
     
     <!-- Blog Page -->
     <url>
-        <loc>https://seo-project-mpa2.vercel.app/blog.html</loc>
+        <loc>https://seo-project-y8u1.vercel.app/blog.html</loc>
         <lastmod>2026-04-19</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -18,7 +18,7 @@
 
     <!-- Login Page -->
     <url>
-        <loc>https://seo-project-mpa2.vercel.app/login.html</loc>
+        <loc>https://seo-project-y8u1.vercel.app/login.html</loc>
         <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>

@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /uploads/
 
-Sitemap: https://seo-project-mpa2.vercel.app/sitemap.xml
+Sitemap: https://seo-project-y8u1.vercel.app/sitemap.xml

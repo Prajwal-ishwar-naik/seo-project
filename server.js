@@ -291,3 +291,5 @@ app.listen(PORT, () => {
     console.log(`  📁  Serving: ${path.join(__dirname, 'public')}`);
     console.log(`  📦  API:     /api/medicines, /api/rx-upload, /api/track/:id\n`);
 });
+
+module.exports = app;
