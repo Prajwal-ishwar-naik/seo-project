@@ -772,9 +772,42 @@ $(function () {
     $('#hero-shop-btn').on('click', () => $('html,body').animate({ scrollTop: $('#main-content').offset().top - 75 }, 600));
 
     // ═══════════════════════════════════════════════════════
+    //  FETCH BLOG PREVIEW — AJAX
+    // ═══════════════════════════════════════════════════════
+    function fetchBlogPreview() {
+        if ($('#blog-preview').length === 0) return;
+        
+        $.ajax({
+            url:      'data/blogs.json',
+            type:     'GET',
+            dataType: 'json',
+            success: function (data) {
+                const $grid = $('#blog-preview .blog-grid').empty();
+                // Show first 3 blogs
+                $.each(data.slice(0, 3), function (i, blog) {
+                    $grid.append(`
+                        <article class="blog-card">
+                            <div class="blog-img">
+                                <img src="${blog.image}" alt="${blog.title}" onerror="this.src='https://images.unsplash.com/photo-1512678103131-c45a3c36845c?auto=format&fit=crop&q=80&w=800'">
+                                <span class="blog-tag">${blog.tag}</span>
+                            </div>
+                            <div class="blog-content">
+                                <span class="blog-date">${blog.date}</span>
+                                <h3>${blog.title}</h3>
+                                <p>${blog.description}</p>
+                                <a href="blog.html" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>`);
+                });
+            }
+        });
+    }
+
+    // ═══════════════════════════════════════════════════════
     //  INIT
     // ═══════════════════════════════════════════════════════
     renderCart();
     updateBadge();
-    fetchMedicines();   // ← real $.ajax GET /api/medicines
+    fetchMedicines();
+    fetchBlogPreview();
 });

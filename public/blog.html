@@ -67,6 +67,26 @@
             margin: 0 auto;
         }
 
+        .skeleton-card {
+            background: #fff;
+            border-radius: var(--radius);
+            height: 400px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .skeleton-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: translateX(-100%);
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            100% { transform: translateX(100%); }
+        }
+
         @media (max-width: 768px) {
             .blog-filters {
                 overflow-x: auto;
@@ -129,85 +149,14 @@
 
     <section class="blog-listing">
         <div class="blog-container">
+            <div id="blog-tech-note" style="margin-bottom: 2rem; font-size: 0.85rem; color: #64748b; text-align: center; font-weight: 500;">
+                <i class="fas fa-code"></i> Powered by <strong>AJAX</strong> technology for seamless, lightning-fast content delivery.
+            </div>
             <div class="blog-grid" id="blog-listing-grid">
-                <!-- Articles will be here -->
-                <article class="blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800" alt="Vitamin C" onerror="this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800'">
-                        <span class="blog-tag">Nutrition</span>
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-date">March 24, 2026</span>
-                        <h3>Why Vitamin C is Essential This Season</h3>
-                        <p>Discover how Vitamin C boosts your immune system and which supplements are best for you. We explore the top sources and how much you really need.</p>
-                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800" alt="Stress Management" onerror="this.src='https://images.unsplash.com/photo-1518107616985-bd48230d3b20?auto=format&fit=crop&q=80&w=800'">
-                        <span class="blog-tag">Wellbeing</span>
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-date">April 02, 2026</span>
-                        <h3>Managing Workplace Stress Effectively</h3>
-                        <p>Practical tips from psychologists to maintain your mental peace in a high-pressure environment. Learn about meditation, boundary setting, and more.</p>
-                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Yoga" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca67ad48b6e?auto=format&fit=crop&q=80&w=800'">
-                        <span class="blog-tag">Fitness</span>
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-date">April 10, 2026</span>
-                        <h3>15 Minutes of Yoga: A Daily Ritual</h3>
-                        <p>How a small commitment to movement can transform your physical health and flexibility. Simple poses for beginners that you can do anywhere.</p>
-                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=800" alt="Medicine" onerror="this.src='https://images.unsplash.com/photo-1512678103131-c45a3c36845c?auto=format&fit=crop&q=80&w=800'">
-                        <span class="blog-tag">Medical News</span>
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-date">April 12, 2026</span>
-                        <h3>The Future of Personalized Medicine</h3>
-                        <p>How genetic testing is changing how we treat chronic diseases. A look into the next decade of healthcare technology and patient care.</p>
-                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1542884748-2b87b36c6b90?auto=format&fit=crop&q=80&w=800" alt="Hydration" onerror="this.src='https://images.unsplash.com/photo-1556760544-74c17e0344bb?auto=format&fit=crop&q=80&w=800'">
-                        <span class="blog-tag">Nutrition</span>
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-date">April 14, 2026</span>
-                        <h3>Hydration: More Than Just Drinking Water</h3>
-                        <p>Electrolytes, water-rich foods, and the science of staying hydrated during the summer heat. Why pure water might not be enough for athletes.</p>
-                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800" alt="Blood Pressure" onerror="this.src='https://images.unsplash.com/photo-1576091160550-217359f42f8c?auto=format&fit=crop&q=80&w=800'">
-                        <span class="blog-tag">Common Ailments</span>
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-date">April 15, 2026</span>
-                        <h3>Understanding Blood Pressure Numbers</h3>
-                        <p>What do systolic and diastolic mean? A clear guide to reading your monitor and when to consult a doctor About your readings.</p>
-                        <a href="#" class="blog-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+                <!-- Articles will be loaded here via AJAX -->
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
             </div>
         </div>
     </section>
@@ -216,6 +165,22 @@
 <!-- ═══════════════════════════════════════════
      SECURE FOOTER
 ═══════════════════════════════════════════ -->
+<!-- 6. Blog Detail Modal -->
+<div id="blog-detail-modal" class="modal-backdrop hidden">
+    <div class="modal modal-lg">
+        <div class="modal-header">
+            <h3 id="blog-detail-title">Article Details</h3>
+            <button class="close-modal" aria-label="Close"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="modal-body" id="blog-detail-body">
+            <!-- Blog content will be injected here -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn-outline-sm close-modal">Close Article</button>
+        </div>
+    </div>
+</div>
+
 <footer id="main-footer">
     <div class="footer-upper">
         <div class="footer-brand">
@@ -277,27 +242,151 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-    // Simple filter logic
-    $('.blog-filter-btn').on('click', function() {
-        $('.blog-filter-btn').removeClass('active');
-        $(this).addClass('active');
-        
-        const filter = $(this).text();
-        if (filter === 'All Articles') {
-            $('.blog-card').show();
-        } else {
-            $('.blog-card').hide();
-            $(`.blog-tag:contains("${filter}")`).closest('.blog-card').show();
-        }
-    });
+    $(function() {
+        let allBlogs = [];
 
-    // Header scroll effect
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 50) {
-            $('#site-header').addClass('scrolled');
-        } else {
-            $('#site-header').removeClass('scrolled');
+        function renderBlogs(blogs) {
+            const $grid = $('#blog-listing-grid').empty();
+            if (blogs.length === 0) {
+                $grid.html('<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #64748b;">No articles found matching this category.</div>');
+                return;
+            }
+
+            blogs.forEach((blog, index) => {
+                const card = `
+                    <article class="blog-card" style="display:none;">
+                        <div class="blog-img">
+                            <img src="${blog.image}" alt="${blog.title}" onerror="this.src='https://images.unsplash.com/photo-1512678103131-c45a3c36845c?auto=format&fit=crop&q=80&w=800'">
+                            <span class="blog-tag">${blog.tag}</span>
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-date">${blog.date}</span>
+                            <h3>${blog.title}</h3>
+                            <p>${blog.description}</p>
+                            <a href="#" class="blog-more btn-read-full" data-id="${blog.id}">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>`;
+                const $card = $(card);
+                $grid.append($card);
+                setTimeout(() => $card.fadeIn(300), index * 50);
+            });
         }
+
+        // Fetch blogs via AJAX
+        function fetchBlogs() {
+            $.ajax({
+                url: 'data/blogs.json',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    allBlogs = data;
+                    renderBlogs(allBlogs);
+                },
+                error: function() {
+                    $('#blog-listing-grid').html('<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #ef4444;"><i class="fas fa-circle-exclamation"></i> Error loading articles. Please try again later.</div>');
+                }
+            });
+        }
+
+        fetchBlogs();
+
+        // Filter logic
+        $('.blog-filter-btn').on('click', function() {
+            $('.blog-filter-btn').removeClass('active');
+            $(this).addClass('active');
+            
+            const filter = $(this).text();
+            if (filter === 'All Articles') {
+                renderBlogs(allBlogs);
+            } else {
+                const filtered = allBlogs.filter(blog => blog.tag === filter);
+                renderBlogs(filtered);
+            }
+        });
+
+        // Search logic
+        $('#live-search').on('input', function() {
+            const q = $(this).val().toLowerCase().trim();
+            const filtered = allBlogs.filter(blog => 
+                blog.title.toLowerCase().includes(q) || 
+                blog.description.toLowerCase().includes(q) ||
+                blog.tag.toLowerCase().includes(q)
+            );
+            renderBlogs(filtered);
+        });
+
+        // Header scroll effect
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $('#site-header').addClass('scrolled');
+            } else {
+                $('#site-header').removeClass('scrolled');
+            }
+        });
+
+        // Modal Logic
+        function openModal(sel) {
+            $(sel).removeClass('hidden');
+            setTimeout(() => $(sel).addClass('open'), 10);
+            $('body').css('overflow', 'hidden');
+        }
+
+        function closeModal(sel) {
+            $(sel).removeClass('open');
+            setTimeout(() => {
+                $(sel).addClass('hidden');
+                $('body').css('overflow', '');
+            }, 300);
+        }
+
+        $(document).on('click', '.close-modal', function() {
+            closeModal('#' + $(this).closest('.modal-backdrop').attr('id'));
+        });
+
+        $(document).on('click', '.modal-backdrop', function(e) {
+            if ($(e.target).is('.modal-backdrop')) {
+                closeModal('#' + $(this).attr('id'));
+            }
+        });
+
+        // Read Full Article Handler
+        $(document).on('click', '.btn-read-full', function(e) {
+            e.preventDefault();
+            const id = $(this).data('id');
+            const blog = allBlogs.find(b => b.id === id);
+            
+            if (blog) {
+                $('#blog-detail-title').text(blog.title);
+                
+                // Construct full content if it doesn't exist (using description and placeholders for premium feel)
+                const fullContent = `
+                    <div class="blog-detail-container">
+                        <div class="blog-detail-img">
+                            <img src="${blog.image}" alt="${blog.title}" style="width: 100%; border-radius: 12px; margin-bottom: 1.5rem;">
+                        </div>
+                        <div class="blog-detail-meta" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; color: #64748b; font-size: 0.9rem;">
+                            <span><i class="fas fa-calendar-alt"></i> ${blog.date}</span>
+                            <span><i class="fas fa-tag"></i> ${blog.tag}</span>
+                            <span><i class="fas fa-user"></i> MediShop Expert</span>
+                        </div>
+                        <div class="blog-detail-text" style="font-size: 1.1rem; line-height: 1.7; color: #334155;">
+                            <p style="font-weight: 600; font-size: 1.2rem; margin-bottom: 1rem;">${blog.description}</p>
+                            <p>${blog.content || 'At MediShop, we believe that informed patients are healthier patients. This comprehensive guide explores the latest research and practical steps you can take to improve your well-being in this specific area.'}</p>
+                            <h4 style="margin: 1.5rem 0 0.5rem; color: #1e3a8a;">Key Takeaways:</h4>
+                            <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                                <li>Consult with a healthcare professional before starting any new regimen.</li>
+                                <li>Consistency is key to seeing long-term health benefits.</li>
+                                <li>Listen to your body and adjust your habits accordingly.</li>
+                            </ul>
+                            <p>For more personalized advice, feel free to visit our pharmacy or consult with our online medical team. Stay healthy!</p>
+                        </div>
+                    </div>
+                `;
+                
+                $('#blog-detail-body').html(fullContent);
+                openModal('#blog-detail-modal');
+            }
+        });
     });
 </script>
 </body>
