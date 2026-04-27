@@ -795,7 +795,7 @@ $(function () {
                                 <span class="blog-date">${blog.date}</span>
                                 <h3>${blog.title}</h3>
                                 <p>${blog.description}</p>
-                                <a href="blog.html" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                <a href="blog-single.html?id=${blog.id}" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </article>`);
                 });

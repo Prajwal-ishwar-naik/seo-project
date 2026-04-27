@@ -1,182 +1,182 @@
 [
   {
     "id": 1,
-    "title": "Why Vitamin C is Essential This Season",
-    "date": "March 24, 2026",
-    "tag": "Nutrition",
-    "description": "Discover how Vitamin C boosts your immune system and which supplements are best for you. We explore the top sources and how much you really need.",
-    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800",
-    "content": "Vitamin C, also known as ascorbic acid, is a water-soluble vitamin that plays a crucial role in maintaining your health. During the changing seasons, our bodies are often more susceptible to infections. Vitamin C supports various cellular functions of both the innate and adaptive immune systems. It accumulates in phagocytic cells, such as neutrophils, and can enhance chemotaxis, phagocytosis, generation of reactive oxygen species, and ultimately microbial killing. The recommended daily intake for adults is 75-90 mg, but during times of illness, slightly higher doses may be beneficial."
+    "title": "Mastering AJAX for Seamless User Experiences",
+    "date": "April 27, 2026",
+    "tag": "Development",
+    "description": "Learn how AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes.",
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800",
+    "content": "Asynchronous JavaScript and XML (AJAX) is a set of web development techniques using many web technologies on the client-side to create asynchronous web applications. With AJAX, web applications can send and retrieve data from a server asynchronously (in the background) without interfering with the display and behavior of the existing page. This means you can update parts of a web page without reloading the whole thing, which is essential for modern, high-performance web applications like MediShop."
   },
   {
     "id": 2,
-    "title": "Managing Workplace Stress Effectively",
-    "date": "April 02, 2026",
-    "tag": "Wellbeing",
-    "description": "Practical tips from psychologists to maintain your mental peace in a high-pressure environment. Learn about meditation, boundary setting, and more.",
-    "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
-    "content": "Workplace stress is an increasingly common issue in our modern, always-on culture. To manage it effectively, it's essential to establish clear boundaries between work and personal life. Psychologists recommend the 'pomodoro technique' to break your day into manageable chunks, reducing the feeling of being overwhelmed. Additionally, practicing mindfulness for just five minutes during your lunch break can significantly lower cortisol levels. Remember, it's okay to say no to extra tasks if your plate is already full."
+    "title": "The Power of jQuery in Modern Web Design",
+    "date": "April 27, 2026",
+    "tag": "Libraries",
+    "description": "Why jQuery remains a favorite for developers who want to write less and do more with DOM manipulation and event handling.",
+    "image": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=800",
+    "content": "jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and AJAX much simpler with an easy-to-use API that works across a multitude of browsers. In our project, jQuery handles everything from rendering product grids to managing the complex cart logic, allowing us to build interactive features with significantly less code than vanilla JavaScript."
   },
   {
     "id": 3,
-    "title": "15 Minutes of Yoga: A Daily Ritual",
-    "date": "April 10, 2026",
-    "tag": "Fitness",
-    "description": "How a small commitment to movement can transform your physical health and flexibility. Simple poses for beginners that you can do anywhere.",
-    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800",
-    "content": "Yoga is not just about flexibility; it's about connecting your breath with your movement. A daily 15-minute practice can improve your posture, reduce chronic pain, and clear your mind. For beginners, we recommend starting with simple poses like Mountain Pose (Tadasana), Downward-Facing Dog (Adho Mukha Svanasana), and Child's Pose (Balasana). These poses help in stretching the entire body and calming the nervous system. Consistency is more important than duration, so try to make it a part of your morning routine."
+    "title": "Building Robust APIs with Express.js",
+    "date": "April 27, 2026",
+    "tag": "Backend",
+    "description": "A deep dive into how Express simplifies the server-side logic and routing for our online pharmacy application.",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+    "content": "Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. It facilitates the rapid development of Node based Web Applications. In our tech stack, Express acts as the backbone, handling API requests for medicines, order tracking, and file uploads. Its middleware architecture allows us to handle complex logic like authentication and data validation in a clean, modular way."
   },
   {
     "id": 4,
-    "title": "The Future of Personalized Medicine",
-    "date": "April 12, 2026",
-    "tag": "Medical News",
-    "description": "How genetic testing is changing how we treat chronic diseases. A look into the next decade of healthcare technology and patient care.",
-    "image": "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=800",
-    "content": "Personalized medicine, often called precision medicine, is an emerging approach for disease treatment and prevention that takes into account individual variability in genes, environment, and lifestyle for each person. This approach will allow doctors and researchers to predict more accurately which treatment and prevention strategies for a particular disease will work in which groups of people. It is in contrast to a 'one-size-fits-all' approach, in which disease treatment and prevention strategies are developed for the average person, with less consideration for the differences between individuals."
+    "title": "Node.js: The Runtime for High-Performance Servers",
+    "date": "April 27, 2026",
+    "tag": "Infrastructure",
+    "description": "Understanding why Node's event-driven, non-blocking I/O model is perfect for handling multiple simultaneous connections.",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800",
+    "content": "Node.js is a cross-platform, open-source JavaScript runtime environment that can run on Windows, Linux, Unix, macOS, and more. Node.js runs on the V8 JavaScript engine and executes JavaScript code outside a web browser. Its non-blocking I/O model is particularly efficient for data-intensive real-time applications. By using Node.js, we ensure that our pharmacy platform can scale to handle thousands of concurrent users searching for medicines without lag."
   },
   {
     "id": 5,
-    "title": "Hydration: More Than Just Drinking Water",
-    "date": "April 14, 2026",
-    "tag": "Nutrition",
-    "description": "Electrolytes, water-rich foods, and the science of staying hydrated during the summer heat. Why pure water might not be enough for athletes.",
-    "image": "https://images.unsplash.com/photo-1542884748-2b87b36c6b90?auto=format&fit=crop&q=80&w=800",
-    "content": "Hydration is about maintaining the balance of fluids and electrolytes in your body. While drinking water is essential, your body also needs minerals like sodium, potassium, and magnesium to absorb that water effectively. Water-rich foods like cucumbers, watermelon, and oranges can contribute significantly to your daily fluid intake. For those engaging in intense physical activity, electrolyte-replacement drinks may be necessary to prevent dehydration and muscle cramps. Pay attention to your body's thirst signals and the color of your urine as indicators of your hydration status."
+    "title": "JSON: The Universal Language of Data",
+    "date": "April 27, 2026",
+    "tag": "Data",
+    "description": "How we use JSON to store and transmit complex data structures between our frontend and backend systems.",
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800",
+    "content": "JavaScript Object Notation (JSON) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. We use JSON for everything from our medicine catalogue (`medicines.json`) to our blog content. It provides a structured way to represent our data that is perfectly compatible with our JavaScript-heavy frontend, ensuring seamless data flow across the entire application."
   },
   {
     "id": 6,
-    "title": "Understanding Blood Pressure Numbers",
-    "date": "April 15, 2026",
-    "tag": "Common Ailments",
-    "description": "What do systolic and diastolic mean? A clear guide to reading your monitor and when to consult a doctor About your readings.",
-    "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800",
-    "content": "Blood pressure is measured using two numbers: systolic and diastolic. The systolic number (the top number) measures the pressure in your arteries when your heart beats. The diastolic number (the bottom number) measures the pressure in your arteries when your heart rests between beats. A normal blood pressure reading is usually around 120/80 mmHg. Consistently high readings (hypertension) can increase the risk of heart disease and stroke. It's important to monitor your blood pressure regularly and discuss any concerns with your healthcare provider."
+    "title": "Responsive Layouts with CSS Grid and Flexbox",
+    "date": "April 27, 2026",
+    "tag": "Design",
+    "description": "Combining the power of Grid for layouts and Flexbox for components to create truly responsive web experiences.",
+    "image": "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&q=80&w=800",
+    "content": "Modern CSS offers powerful tools for layout. CSS Grid provides a two-dimensional layout system, perfect for the main product grid on our home page. Flexbox, on the other hand, is ideal for one-dimensional layouts like our navigation bar or cart items. By combining both, we've created a site that looks beautiful and remains functional on every device, from the smallest smartphone to the largest ultra-wide monitor."
   },
   {
     "id": 7,
-    "title": "The Benefits of Intermittent Fasting",
-    "date": "April 16, 2026",
-    "tag": "Nutrition",
-    "description": "Exploring how timed eating patterns can improve metabolic health, weight management, and cellular repair processes.",
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800",
-    "content": "Intermittent fasting is an eating pattern that cycles between periods of fasting and eating. It doesn't specify which foods you should eat but rather when you should eat them. Popular methods include the 16/8 method and the 5:2 diet. Research suggests that intermittent fasting can lead to weight loss, improved insulin sensitivity, and reduced inflammation. During the fasting period, your body undergoes cellular repair processes and changes gene expression related to longevity and protection against disease. However, it's not suitable for everyone, so consult your doctor before starting."
+    "title": "The Art of Responsive Web Design (RWD)",
+    "date": "April 27, 2026",
+    "tag": "UX/UI",
+    "description": "Why mobile-first design is no longer an option but a requirement for modern web applications in 2026.",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    "content": "Responsive web design is about using HTML and CSS to automatically resize, hide, shrink, or enlarge a website to make it look good on all devices. Our approach involves using fluid grids, flexible images, and media queries. Since most users now access healthcare services via mobile devices, we've optimized every button, form, and modal to be touch-friendly and easily readable on small screens."
   },
   {
     "id": 8,
-    "title": "Sleep Hygiene: Tips for a Better Night",
-    "date": "April 17, 2026",
-    "tag": "Wellbeing",
-    "description": "Quality sleep is fundamental to health. Learn about the 'power down' hour, optimal room temperature, and avoiding blue light.",
-    "image": "https://images.unsplash.com/photo-1511295742364-9119556d7975?auto=format&fit=crop&q=80&w=800",
-    "content": "Good sleep hygiene is a set of habits and practices that are conducive to sleeping well on a regular basis. This includes maintaining a consistent sleep schedule, even on weekends. Your bedroom should be a sanctuary for sleep—dark, quiet, and cool (around 18°C is often ideal). Avoiding screens at least an hour before bed is crucial as the blue light emitted can interfere with melatonin production. Instead, try reading a physical book or taking a warm bath to signal to your body that it's time to wind down."
+    "title": "Enhancing UI with Font Awesome Iconography",
+    "date": "April 27, 2026",
+    "tag": "Design",
+    "description": "How consistent icon sets improve navigation and user understanding across our healthcare platform.",
+    "image": "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
+    "content": "Font Awesome is a font and icon toolkit based on CSS and Less. Icons serve as visual cues that help users navigate faster. Whether it's the prescription icon for Rx-only medicines or the truck icon for tracking, these visual elements provide immediate context. We've used Font Awesome 6.5 to ensure our icons are crisp, modern, and easily stylable with our primary color palette."
   },
   {
     "id": 9,
-    "title": "Superfoods to Boost Your Brain Power",
-    "date": "April 18, 2026",
-    "tag": "Nutrition",
-    "description": "Blueberries, fatty fish, and turmeric. Discover the science-backed foods that help maintain focus and prevent cognitive decline.",
-    "image": "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&q=80&w=800",
-    "content": "The food you eat plays a vital role in keeping your brain healthy and can improve specific mental tasks, such as memory and concentration. Fatty fish like salmon and trout are rich sources of omega-3 fatty acids, which are essential for brain health. Blueberries contain anthocyanins, a group of plant compounds with anti-inflammatory and antioxidant effects. Turmeric has been shown to cross the blood-brain barrier and has potent anti-inflammatory and antioxidant benefits. Incorporating these superfoods into your diet can help protect your brain from age-related decline."
+    "title": "Typography with Google Fonts: Plus Jakarta Sans",
+    "date": "April 27, 2026",
+    "tag": "Design",
+    "description": "Choosing the right typeface to convey trust, professionalism, and modern health standards.",
+    "image": "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&q=80&w=800",
+    "content": "Typography is the silent ambassador of your brand. We chose 'Plus Jakarta Sans' for our headings and 'Inter' for body text. Plus Jakarta Sans offers a modern, clean, and energetic feel, which is perfect for a forward-thinking pharmacy. Inter is specifically designed for high readability on computer screens. Together, they ensure that our medical information is easy to consume while looking premium."
   },
   {
     "id": 10,
-    "title": "Mental Health in the Digital Age",
-    "date": "April 19, 2026",
-    "tag": "Wellbeing",
-    "description": "How social media impacts our psyche and practical ways to perform a digital detox without losing connection.",
-    "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=800",
-    "content": "Our digital lives are now inextricably linked with our mental well-being. While technology keeps us connected, the constant stream of information and the pressure to present a 'perfect' life on social media can lead to anxiety and feelings of inadequacy. A digital detox—taking a deliberate break from electronic devices—can help reset your mental state. Start with small steps, like turning off notifications or setting 'no-phone zones' in your home. Use the extra time to engage in offline hobbies, spend time in nature, or connect with loved ones face-to-face."
+    "title": "Sticky Headers and Navigation UX",
+    "date": "April 27, 2026",
+    "tag": "UX/UI",
+    "description": "Keeping critical tools like search and the cart within reach at all times using CSS sticky positioning.",
+    "image": "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=800",
+    "content": "A sticky header stays at the top of the screen as the user scrolls. This is vital for e-commerce because it keeps the search bar and the shopping cart icon always visible. We've implemented a 'scrolled' class in JavaScript that adds a subtle shadow to the header as you scroll down, providing visual feedback that the header is pinned, which improves the overall user experience."
   },
   {
     "id": 11,
-    "title": "The Importance of Regular Checkups",
-    "date": "April 20, 2026",
-    "tag": "Medical News",
-    "description": "Prevention is better than cure. Why annual health screenings are crucial for early detection of potential health issues.",
-    "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800",
-    "content": "Regular health checkups are essential for detecting potential health problems early, when they are often easier to treat. These screenings can identify issues like high blood pressure, high cholesterol, and early signs of diabetes before you even have symptoms. Your doctor can also provide personalized advice on vaccinations, screenings based on your age and family history, and lifestyle changes to improve your long-term health. Don't wait until you're sick to see a doctor; proactive healthcare is the best investment you can make in yourself."
+    "title": "Building Premium Modal Interfaces",
+    "date": "April 27, 2026",
+    "tag": "UX/UI",
+    "description": "How we use modal windows to keep the user context while providing deep-dive details on products and blogs.",
+    "image": "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&q=80&w=800",
+    "content": "Modals are dialog boxes/pop-up windows that are displayed on top of the current page. We use them for medicine details, prescription uploads, and blog articles. Our modals feature backdrop blurs and smooth scale transitions to create a premium, app-like feel. They allow users to interact with specific content without losing their place on the main page, reducing friction in the shopping journey."
   },
   {
     "id": 12,
-    "title": "Combatting Seasonal Allergies Naturally",
-    "date": "April 21, 2026",
-    "tag": "Common Ailments",
-    "description": "From local honey to saline rinses, explore natural remedies that can help soothe itchy eyes and runny noses this spring.",
-    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800",
-    "content": "Seasonal allergies, or hay fever, can make spring a miserable time for many. While over-the-counter medications are available, natural remedies can also provide relief. Saline nasal rinses can help clear pollen from your nasal passages. Local honey is believed by some to help your body build a tolerance to local pollen. Keeping windows closed during high-pollen days and using an air purifier can also reduce your exposure. Additionally, certain supplements like stinging nettle and quercetin may have natural antihistamine properties."
+    "title": "Client-Side Form Validation for Better Data",
+    "date": "April 27, 2026",
+    "tag": "Development",
+    "description": "Preventing errors before they reach the server using JavaScript-based input checking.",
+    "image": "https://images.unsplash.com/photo-1554098415-7894713f999e?auto=format&fit=crop&q=80&w=800",
+    "content": "Form validation ensures that users provide correctly formatted data. On our platform, we validate prescriptions, contact forms, and checkout details before they are sent to the server. This provides instant feedback to the user and reduces server load by catching errors early. We use a combination of HTML5 required attributes and custom jQuery logic for more complex validation like phone number formatting."
   },
   {
     "id": 13,
-    "title": "Gut Health: The Second Brain",
-    "date": "April 22, 2026",
-    "tag": "Nutrition",
-    "description": "How the microbiome affects your mood, immunity, and overall vitality. The role of probiotics and prebiotics explained.",
-    "image": "https://images.unsplash.com/photo-1550505393-fa797173e330?auto=format&fit=crop&q=80&w=800",
-    "content": "Your gut is home to trillions of bacteria, collectively known as the gut microbiome. This complex ecosystem plays a vital role in your overall health, influencing everything from digestion to immune function and even your mental health. Probiotics are 'good' bacteria found in fermented foods like yogurt and sauerkraut, while prebiotics are fibers that feed these bacteria. A diet rich in diverse plant foods can help maintain a healthy microbiome. Poor gut health has been linked to various issues, including autoimmune diseases and mood disorders, highlighting the importance of 'feeding' your gut well."
+    "title": "Git and GitHub: Version Control in Action",
+    "date": "April 27, 2026",
+    "tag": "Workflow",
+    "description": "How we manage our codebase, track changes, and collaborate using industry-standard version control.",
+    "image": "https://images.unsplash.com/photo-1618401471353-b98aadebc25a?auto=format&fit=crop&q=80&w=800",
+    "content": "Git is a distributed version control system that tracks changes in any set of computer files. GitHub provides hosting for software development and version control using Git. Our project uses a feature-branch workflow, allowing us to implement new features like the 'Read Full Article' functionality in isolation before merging it into the main production branch, ensuring stability at all times."
   },
   {
     "id": 14,
-    "title": "Desk Exercises for Office Workers",
-    "date": "April 23, 2026",
-    "tag": "Fitness",
-    "description": "Stuck at a desk all day? Try these subtle stretches and movements to keep your joints limber and reduce back pain.",
-    "image": "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&q=80&w=800",
-    "content": "Sitting for long periods can lead to muscle tightness, poor posture, and back pain. To combat these effects, try incorporating simple 'deskercises' into your workday. Neck rolls, shoulder shrugs, and seated spinal twists can help release tension. Leg extensions under your desk can keep your blood flowing. Try to stand up and walk around for at least five minutes every hour. Even small movements can make a big difference in how your body feels at the end of the day. Remember, your desk shouldn't be a cage for your body."
+    "title": "SEO Best Practices for Online Pharmacies",
+    "date": "April 27, 2026",
+    "tag": "SEO",
+    "description": "Optimizing metadata, heading structure, and performance to rank higher in search results.",
+    "image": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800",
+    "content": "Search Engine Optimization (SEO) is the process of improving the quality and quantity of website traffic. For MediShop, we've implemented semantic HTML5 tags (like <header>, <main>, and <footer>), descriptive meta tags, and high-quality alt text for images. We also ensure fast load times and mobile-friendliness, which are key ranking factors for Google."
   },
   {
     "id": 15,
-    "title": "The Power of Mindfulness Meditation",
-    "date": "April 24, 2026",
-    "tag": "Wellbeing",
-    "description": "Science shows that just 10 minutes of meditation a day can significantly lower cortisol levels and improve emotional regulation.",
-    "image": "https://images.unsplash.com/photo-1506126613408-eca67ad48b6e?auto=format&fit=crop&q=80&w=800",
-    "content": "Mindfulness meditation is the practice of purposely bringing one's attention to experiences occurring in the present moment without judgment. Research has shown that regular practice can physically change the brain, strengthening areas associated with emotional regulation and reducing the size of the amygdala, the brain's 'fear center.' You don't need a special cushion or a quiet cave; you can practice mindfulness anywhere by simply focusing on your breath or the sensations in your body. It's a powerful tool for reducing stress and improving overall life satisfaction."
+    "title": "Sitemaps and Robots.txt: Guiding Search Crawlers",
+    "date": "April 27, 2026",
+    "tag": "SEO",
+    "description": "How we tell search engines which pages to index and which to ignore for better site health.",
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800",
+    "content": "A sitemap is a file where you provide information about the pages, videos, and other files on your site. The `robots.txt` file tells search engine crawlers which URLs the crawler can access on your site. We've configured these files to ensure that our core medicine pages and health blogs are indexed properly, while sensitive areas like the login page are kept out of search results."
   },
   {
     "id": 16,
-    "title": "Vaccination Myths vs. Facts",
-    "date": "April 25, 2026",
-    "tag": "Medical News",
-    "description": "Addressing common misconceptions with peer-reviewed data to help you make informed decisions for your family's health.",
-    "image": "https://images.unsplash.com/photo-1583912267550-d44d7a125820?auto=format&fit=crop&q=80&w=800",
-    "content": "Vaccines are one of the greatest achievements in public health, saving millions of lives every year. However, misinformation can lead to vaccine hesitancy. It's important to rely on science-backed information from organizations like the WHO and CDC. Vaccines undergo rigorous testing for safety and efficacy before they are approved for public use. They work by training your immune system to recognize and fight specific pathogens without making you sick. By getting vaccinated, you're not only protecting yourself but also contributing to 'herd immunity' that protects vulnerable members of the community."
+    "title": "Modern Web Deployment with Vercel",
+    "date": "April 27, 2026",
+    "tag": "Infrastructure",
+    "description": "Taking our application from local development to the global stage with automated CI/CD pipelines.",
+    "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800",
+    "content": "Deployment is the process of making your application available to users. We use Vercel for its speed and simplicity. Every time we push code to GitHub, Vercel automatically builds and deploys a preview version of the site. This allows for rapid testing and ensures that our production environment is always in sync with our latest verified code."
   },
   {
     "id": 17,
-    "title": "Healthy Aging: Maintaining Mobility",
-    "date": "April 26, 2026",
-    "tag": "Fitness",
-    "description": "Tips for seniors to stay active, including balance exercises and strength training to prevent falls and maintain independence.",
-    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800",
-    "content": "Aging gracefully is about maintaining your quality of life and independence. Physical activity is crucial for this. Strength training helps maintain muscle mass and bone density, while balance exercises can prevent falls, which are a leading cause of injury in seniors. Activities like swimming, walking, and Tai Chi are excellent low-impact options. It's also important to stay socially active and keep your mind engaged through learning new skills or hobbies. Proper nutrition, including adequate protein and calcium, also plays a vital role in maintaining mobility as you age."
+    "title": "Persistence with LocalStorage",
+    "date": "April 27, 2026",
+    "tag": "Development",
+    "description": "Saving user preferences and shopping cart items without needing a complex database for every session.",
+    "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=800",
+    "content": "The `localStorage` property allows you to access a Storage object for the Document's origin; the stored data is saved across browser sessions. We use this to store the shopping cart items. This means even if a user refreshes their page or closes their browser, their selected medicines will still be there when they return, significantly improving the conversion rate."
   },
   {
     "id": 18,
-    "title": "The Role of Magnesium in Your Body",
+    "title": "Skeleton Loaders: Improving Perceived Performance",
     "date": "April 27, 2026",
-    "tag": "Nutrition",
-    "description": "From muscle function to sleep support, magnesium is involved in over 300 biochemical reactions. Are you getting enough?",
-    "image": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=800",
-    "content": "Magnesium is an essential mineral that your body cannot produce on its own. It's involved in energy production, protein synthesis, and muscle and nerve function. Symptoms of magnesium deficiency can include muscle cramps, fatigue, and irritability. Good dietary sources include leafy green vegetables, nuts, seeds, and whole grains. Some people may benefit from magnesium supplements, especially for sleep support or managing migraines, but it's important to consult with a healthcare professional first. Magnesium is truly a 'multitasking' mineral that supports hundreds of essential functions."
+    "tag": "UX/UI",
+    "description": "Reducing user frustration during data fetches with elegant placeholder animations.",
+    "image": "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?auto=format&fit=crop&q=80&w=800",
+    "content": "Skeleton screens are blank versions of a page into which information is gradually loaded. Instead of showing a spinner or a blank page, we show gray boxes that mirror the shape of our medicine cards. This 'shimmer' effect makes the app feel faster and more responsive, as the user can immediately see where the content will appear."
   },
   {
     "id": 19,
-    "title": "Understanding Common Cold vs. Flu",
-    "date": "April 28, 2026",
-    "tag": "Common Ailments",
-    "description": "Knowing the difference can help you choose the right treatment. We break down the symptoms, duration, and severity.",
-    "image": "https://images.unsplash.com/photo-1584036533827-45bce166ad94?auto=format&fit=crop&q=80&w=800",
-    "content": "While both the common cold and the flu are respiratory illnesses caused by different viruses, they have similar symptoms, making them hard to distinguish. Generally, flu symptoms are more severe and come on more quickly. Fever, body aches, and extreme fatigue are more common with the flu. A cold is usually milder, with a runny or stuffy nose being the primary symptom. Treatment for both usually involves rest and hydration, but antiviral medications may be prescribed for the flu if caught early. If you're unsure, it's always best to consult your doctor for an accurate diagnosis."
+    "title": "Dynamic Animations with CSS and jQuery",
+    "date": "April 27, 2026",
+    "tag": "Design",
+    "description": "Adding micro-interactions and transitions to make the UI feel alive and responsive to user actions.",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
+    "content": "Animations aren't just for show; they provide feedback and guide the user's eye. We use CSS transitions for hover effects on buttons and jQuery's `.fadeIn()` and `.slideDown()` for entering elements like search results and cart notifications. These subtle movements make the interface feel more organic and premium."
   },
   {
     "id": 20,
-    "title": "Skin Care: Protection Against UV Rays",
-    "date": "April 29, 2026",
-    "tag": "Wellbeing",
-    "description": "Sunscreen is just the beginning. Learn about clothing, timing, and how to spot early signs of sun damage on your skin.",
-    "image": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&q=80&w=800",
-    "content": "Protecting your skin from ultraviolet (UV) radiation is the most important thing you can do to prevent skin cancer and premature aging. Sunscreen with an SPF of 30 or higher should be applied daily, even on cloudy days. But don't rely on sunscreen alone; seek shade during peak sun hours (10 AM to 4 PM) and wear protective clothing, such as wide-brimmed hats and UV-blocking sunglasses. Regularly check your skin for any new moles or changes in existing ones. Early detection of skin damage is key to successful treatment. Your skin is your body's largest organ—treat it with care!"
+    "title": "Implementing a Dark Mode Strategy",
+    "date": "April 27, 2026",
+    "tag": "Design",
+    "description": "Preparing our UI for high-contrast, low-light environments using CSS variables and theme toggles.",
+    "image": "https://images.unsplash.com/photo-1510511459019-5dee99c48db8?auto=format&fit=crop&q=80&w=800",
+    "content": "Dark mode reduces the light emitted by device screens while maintaining minimum color contrast ratios. By using CSS variables for our color palette (like `--bg` and `--text`), we've built a system that can easily switch themes. This choice respects user preferences and can help reduce eye strain during late-night browsing of our health insights."
   }
 ]

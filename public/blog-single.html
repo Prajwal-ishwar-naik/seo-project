@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MediShop Blog — Read the full article on health and technology insights.">
+    <title>Article | MediShop Health Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .single-blog-hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+            padding: 8rem 1.5rem 4rem;
+            color: #fff;
+            text-align: center;
+        }
+        .single-blog-container {
+            max-width: 900px;
+            margin: -4rem auto 4rem;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+        .blog-header-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+        .blog-body-content {
+            padding: 3rem;
+        }
+        .blog-body-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-3);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+        .blog-body-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-2);
+        }
+        .blog-body-text h2 {
+            color: var(--text);
+            margin: 2.5rem 0 1rem;
+        }
+        .blog-body-text p {
+            margin-bottom: 1.5rem;
+        }
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .back-to-blog:hover {
+            transform: translateX(-5px);
+            color: #60A5FA;
+        }
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        @media (max-width: 768px) {
+            .blog-body-content { padding: 1.5rem; }
+            .blog-header-img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+<header id="site-header">
+    <div class="header-inner">
+        <a class="logo" href="index.html"><i class="fas fa-circle-plus"></i><span>Medi<strong>Shop</strong></span></a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html#main-content" class="nav-link">Shop</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+        </nav>
+        <div class="header-actions">
+            <a href="login.html" class="btn-account" style="text-decoration:none;">
+                <i class="fas fa-circle-user"></i><span>Account</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="single-blog-hero">
+        <div class="blog-container">
+            <a href="blog.html" class="back-to-blog"><i class="fas fa-arrow-left"></i> Back to All Articles</a>
+            <h1 id="article-title" style="font-size: 3rem; font-weight: 800;">Loading Article...</h1>
+        </div>
+    </section>
+
+    <article class="single-blog-container">
+        <div id="blog-content-area">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </article>
+</main>
+
+<footer id="main-footer">
+    <!-- Same footer as other pages for consistency -->
+    <div class="footer-bottom" style="text-align:center; padding: 2rem; border-top: 1px solid var(--border); background:#fff;">
+        <p>&copy; 2026 MediShop Pharmacy. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const blogId = parseInt(urlParams.get('id'));
+
+        if (!blogId) {
+            window.location.href = 'blog.html';
+            return;
+        }
+
+        $.ajax({
+            url: 'data/blogs.json',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                const blog = data.find(b => b.id === blogId);
+                if (blog) {
+                    renderBlog(blog);
+                } else {
+                    $('#blog-content-area').html('<div style="text-align:center; padding:4rem;"><h2>Article Not Found</h2><p>The article you are looking for does not exist.</p><a href="blog.html" class="btn-primary" style="margin-top:1rem;">Return to Blog</a></div>');
+                    $('#article-title').text('Error 404');
+                }
+            },
+            error: function() {
+                $('#blog-content-area').html('<div style="text-align:center; padding:4rem;"><h2>Error Loading</h2><p>Could not load the article. Please try again later.</p></div>');
+            }
+        });
+
+        function renderBlog(blog) {
+            $('#article-title').text(blog.title);
+            document.title = `${blog.title} | MediShop Insights`;
+
+            const html = `
+                <img src="${blog.image}" alt="${blog.title}" class="blog-header-img" onerror="this.src='https://images.unsplash.com/photo-1512678103131-c45a3c36845c?auto=format&fit=crop&q=80&w=800'">
+                <div class="blog-body-content">
+                    <div class="blog-body-meta">
+                        <span><i class="fas fa-calendar-alt"></i> ${blog.date}</span>
+                        <span><i class="fas fa-tag"></i> ${blog.tag}</span>
+                        <span><i class="fas fa-user-pen"></i> MediShop Tech Team</span>
+                    </div>
+                    <div class="blog-body-text">
+                        <p style="font-size: 1.4rem; font-weight: 600; color: var(--text); line-height: 1.6; margin-bottom: 2rem;">
+                            ${blog.description}
+                        </p>
+                        <p>${blog.content}</p>
+                        
+                        <h2>Why it matters</h2>
+                        <p>In the rapidly evolving world of digital healthcare, the choice of technology directly impacts patient safety and service reliability. This technology allows us to provide a seamless, secure, and lightning-fast experience for all our users.</p>
+                        
+                        <blockquote>
+                            "Our mission is to bridge the gap between complex medical requirements and user-friendly digital solutions."
+                        </blockquote>
+
+                        <h2>Key Technical Insights</h2>
+                        <ul>
+                            <li>Scalable architecture designed for high availability.</li>
+                            <li>Mobile-first approach ensuring accessibility for all patients.</li>
+                            <li>State-of-the-art security protocols for data protection.</li>
+                        </ul>
+
+                        <p style="margin-top: 3rem; font-style: italic; color: var(--text-3);">
+                            This article was written by our senior development team to help patients and peers understand the technology powering MediShop.
+                        </p>
+                    </div>
+                </div>
+            `;
+            $('#blog-content-area').hide().html(html).fadeIn(500);
+        }
+    });
+</script>
+</body>
+</html>
