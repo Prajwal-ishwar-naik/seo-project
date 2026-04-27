@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <!-- Home Page -->
     <url>
-        <loc>https://seo-project-y8u1.vercel.app/</loc>
+        <loc>https://seo-project-1fyw.vercel.app/</loc>
         <lastmod>2026-04-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -10,37 +10,37 @@
     
     <!-- Blog Listing Page -->
     <url>
-        <loc>https://seo-project-y8u1.vercel.app/blog.html</loc>
+        <loc>https://seo-project-1fyw.vercel.app/blog.html</loc>
         <lastmod>2026-04-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <!-- Individual Blog Posts (20 Technologies) -->
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=1</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=2</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=3</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=4</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=5</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=6</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=7</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=8</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=9</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=10</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=11</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=12</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=13</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=14</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=15</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=16</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=17</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=18</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=19</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://seo-project-y8u1.vercel.app/blog-single.html?id=20</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=1</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=2</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=3</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=4</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=5</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=6</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=7</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=8</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=9</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=10</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=11</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=12</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=13</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=14</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=15</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=16</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=17</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=18</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=19</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://seo-project-1fyw.vercel.app/blog-single.html?id=20</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
     <!-- Login Page -->
     <url>
-        <loc>https://seo-project-y8u1.vercel.app/login.html</loc>
+        <loc>https://seo-project-1fyw.vercel.app/login.html</loc>
         <lastmod>2026-04-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
