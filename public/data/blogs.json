@@ -5,7 +5,7 @@
     "date": "April 27, 2026",
     "tag": "Development",
     "description": "Learn how AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes.",
-    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
     "content": "Asynchronous JavaScript and XML (AJAX) is a set of web development techniques using many web technologies on the client-side to create asynchronous web applications. With AJAX, web applications can send and retrieve data from a server asynchronously (in the background) without interfering with the display and behavior of the existing page. This means you can update parts of a web page without reloading the whole thing, which is essential for modern, high-performance web applications like MediShop."
   },
   {
@@ -23,7 +23,7 @@
     "date": "April 27, 2026",
     "tag": "Backend",
     "description": "A deep dive into how Express simplifies the server-side logic and routing for our online pharmacy application.",
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
     "content": "Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. It facilitates the rapid development of Node based Web Applications. In our tech stack, Express acts as the backbone, handling API requests for medicines, order tracking, and file uploads. Its middleware architecture allows us to handle complex logic like authentication and data validation in a clean, modular way."
   },
   {
@@ -32,7 +32,7 @@
     "date": "April 27, 2026",
     "tag": "Infrastructure",
     "description": "Understanding why Node's event-driven, non-blocking I/O model is perfect for handling multiple simultaneous connections.",
-    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=800",
     "content": "Node.js is a cross-platform, open-source JavaScript runtime environment that can run on Windows, Linux, Unix, macOS, and more. Node.js runs on the V8 JavaScript engine and executes JavaScript code outside a web browser. Its non-blocking I/O model is particularly efficient for data-intensive real-time applications. By using Node.js, we ensure that our pharmacy platform can scale to handle thousands of concurrent users searching for medicines without lag."
   },
   {
@@ -41,7 +41,7 @@
     "date": "April 27, 2026",
     "tag": "Data",
     "description": "How we use JSON to store and transmit complex data structures between our frontend and backend systems.",
-    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800",
     "content": "JavaScript Object Notation (JSON) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. We use JSON for everything from our medicine catalogue (`medicines.json`) to our blog content. It provides a structured way to represent our data that is perfectly compatible with our JavaScript-heavy frontend, ensuring seamless data flow across the entire application."
   },
   {
@@ -50,7 +50,7 @@
     "date": "April 27, 2026",
     "tag": "Design",
     "description": "Combining the power of Grid for layouts and Flexbox for components to create truly responsive web experiences.",
-    "image": "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
     "content": "Modern CSS offers powerful tools for layout. CSS Grid provides a two-dimensional layout system, perfect for the main product grid on our home page. Flexbox, on the other hand, is ideal for one-dimensional layouts like our navigation bar or cart items. By combining both, we've created a site that looks beautiful and remains functional on every device, from the smallest smartphone to the largest ultra-wide monitor."
   },
   {
@@ -59,7 +59,7 @@
     "date": "April 27, 2026",
     "tag": "UX/UI",
     "description": "Why mobile-first design is no longer an option but a requirement for modern web applications in 2026.",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=800",
     "content": "Responsive web design is about using HTML and CSS to automatically resize, hide, shrink, or enlarge a website to make it look good on all devices. Our approach involves using fluid grids, flexible images, and media queries. Since most users now access healthcare services via mobile devices, we've optimized every button, form, and modal to be touch-friendly and easily readable on small screens."
   },
   {
@@ -68,7 +68,7 @@
     "date": "April 27, 2026",
     "tag": "Design",
     "description": "How consistent icon sets improve navigation and user understanding across our healthcare platform.",
-    "image": "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
     "content": "Font Awesome is a font and icon toolkit based on CSS and Less. Icons serve as visual cues that help users navigate faster. Whether it's the prescription icon for Rx-only medicines or the truck icon for tracking, these visual elements provide immediate context. We've used Font Awesome 6.5 to ensure our icons are crisp, modern, and easily stylable with our primary color palette."
   },
   {
@@ -77,7 +77,7 @@
     "date": "April 27, 2026",
     "tag": "Design",
     "description": "Choosing the right typeface to convey trust, professionalism, and modern health standards.",
-    "image": "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800",
     "content": "Typography is the silent ambassador of your brand. We chose 'Plus Jakarta Sans' for our headings and 'Inter' for body text. Plus Jakarta Sans offers a modern, clean, and energetic feel, which is perfect for a forward-thinking pharmacy. Inter is specifically designed for high readability on computer screens. Together, they ensure that our medical information is easy to consume while looking premium."
   },
   {
@@ -86,7 +86,7 @@
     "date": "April 27, 2026",
     "tag": "UX/UI",
     "description": "Keeping critical tools like search and the cart within reach at all times using CSS sticky positioning.",
-    "image": "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800",
     "content": "A sticky header stays at the top of the screen as the user scrolls. This is vital for e-commerce because it keeps the search bar and the shopping cart icon always visible. We've implemented a 'scrolled' class in JavaScript that adds a subtle shadow to the header as you scroll down, providing visual feedback that the header is pinned, which improves the overall user experience."
   },
   {
@@ -95,7 +95,7 @@
     "date": "April 27, 2026",
     "tag": "UX/UI",
     "description": "How we use modal windows to keep the user context while providing deep-dive details on products and blogs.",
-    "image": "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&q=80&w=800",
     "content": "Modals are dialog boxes/pop-up windows that are displayed on top of the current page. We use them for medicine details, prescription uploads, and blog articles. Our modals feature backdrop blurs and smooth scale transitions to create a premium, app-like feel. They allow users to interact with specific content without losing their place on the main page, reducing friction in the shopping journey."
   },
   {
@@ -104,7 +104,7 @@
     "date": "April 27, 2026",
     "tag": "Development",
     "description": "Preventing errors before they reach the server using JavaScript-based input checking.",
-    "image": "https://images.unsplash.com/photo-1554098415-7894713f999e?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=800",
     "content": "Form validation ensures that users provide correctly formatted data. On our platform, we validate prescriptions, contact forms, and checkout details before they are sent to the server. This provides instant feedback to the user and reduces server load by catching errors early. We use a combination of HTML5 required attributes and custom jQuery logic for more complex validation like phone number formatting."
   },
   {
@@ -113,7 +113,7 @@
     "date": "April 27, 2026",
     "tag": "Workflow",
     "description": "How we manage our codebase, track changes, and collaborate using industry-standard version control.",
-    "image": "https://images.unsplash.com/photo-1618401471353-b98aadebc25a?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1556075798-482a21075249?auto=format&fit=crop&q=80&w=800",
     "content": "Git is a distributed version control system that tracks changes in any set of computer files. GitHub provides hosting for software development and version control using Git. Our project uses a feature-branch workflow, allowing us to implement new features like the 'Read Full Article' functionality in isolation before merging it into the main production branch, ensuring stability at all times."
   },
   {
@@ -122,7 +122,7 @@
     "date": "April 27, 2026",
     "tag": "SEO",
     "description": "Optimizing metadata, heading structure, and performance to rank higher in search results.",
-    "image": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&q=80&w=800",
     "content": "Search Engine Optimization (SEO) is the process of improving the quality and quantity of website traffic. For MediShop, we've implemented semantic HTML5 tags (like <header>, <main>, and <footer>), descriptive meta tags, and high-quality alt text for images. We also ensure fast load times and mobile-friendliness, which are key ranking factors for Google."
   },
   {
@@ -131,7 +131,7 @@
     "date": "April 27, 2026",
     "tag": "SEO",
     "description": "How we tell search engines which pages to index and which to ignore for better site health.",
-    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
     "content": "A sitemap is a file where you provide information about the pages, videos, and other files on your site. The `robots.txt` file tells search engine crawlers which URLs the crawler can access on your site. We've configured these files to ensure that our core medicine pages and health blogs are indexed properly, while sensitive areas like the login page are kept out of search results."
   },
   {
@@ -140,7 +140,7 @@
     "date": "April 27, 2026",
     "tag": "Infrastructure",
     "description": "Taking our application from local development to the global stage with automated CI/CD pipelines.",
-    "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800",
     "content": "Deployment is the process of making your application available to users. We use Vercel for its speed and simplicity. Every time we push code to GitHub, Vercel automatically builds and deploys a preview version of the site. This allows for rapid testing and ensures that our production environment is always in sync with our latest verified code."
   },
   {
@@ -149,7 +149,7 @@
     "date": "April 27, 2026",
     "tag": "Development",
     "description": "Saving user preferences and shopping cart items without needing a complex database for every session.",
-    "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800",
     "content": "The `localStorage` property allows you to access a Storage object for the Document's origin; the stored data is saved across browser sessions. We use this to store the shopping cart items. This means even if a user refreshes their page or closes their browser, their selected medicines will still be there when they return, significantly improving the conversion rate."
   },
   {
@@ -167,7 +167,7 @@
     "date": "April 27, 2026",
     "tag": "Design",
     "description": "Adding micro-interactions and transitions to make the UI feel alive and responsive to user actions.",
-    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
     "content": "Animations aren't just for show; they provide feedback and guide the user's eye. We use CSS transitions for hover effects on buttons and jQuery's `.fadeIn()` and `.slideDown()` for entering elements like search results and cart notifications. These subtle movements make the interface feel more organic and premium."
   },
   {
